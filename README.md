@@ -13,4 +13,4 @@
 - Species tree reconstruction
 
 Tools include Trinity, BUSCO, Evigene, Diamond, OrthoFinder,
-PhyloPyPruner, IQ-TREE, PHYLUCE, and custom Bash/Perl scripts.
+PhyloPyPruner, IQ-TREE, PHYLUCE, aTRAM, and custom Bash/Perl scripts.

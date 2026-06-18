@@ -6,6 +6,10 @@ This repository contains the analytical workflow used to reconstruct evolutionar
 
 The project integrates transcriptomic, genomic, and target-capture sequencing datasets to infer species relationships, identify phylogenetically informative loci, examine character evolution, and test hypotheses regarding the diversification of amphipod body forms, lifestyles, and silk-spinning systems.
 
+<p align="center">
+  <img src="figures/Phylogenomic_Workflow.png" width="75%">
+</p>
+
 ---
 
 ## Analytical Components

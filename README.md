@@ -1,8 +1,8 @@
-# Corophiid Phylogenomics Pipeline
+# Corophiidan Phylogenomics Pipeline
 
 ## Overview
 
-This repository contains the analytical workflow used to reconstruct evolutionary relationships among corophiid amphipods and investigate the origins of major morphological and ecological innovations within the group.
+This repository contains the analytical workflow used to reconstruct evolutionary relationships among corophiidan amphipods and investigate the origins of major morphological and ecological innovations within the group.
 
 The project integrates transcriptomic, genomic, and target-capture sequencing datasets to infer species relationships, identify phylogenetically informative loci, examine character evolution, and test hypotheses regarding the diversification of amphipod body forms, lifestyles, and silk-spinning systems.
 
@@ -110,7 +110,7 @@ This workflow demonstrates approaches for:
 
 ```text
 ├── protocol/
-│   └── Corophiid_Phylogenomics_Protocol.md
+│   └── Corophiidan_Phylogenomics_Protocol.md
 ├── scripts/
 │   ├── bash/
 │   ├── perl/

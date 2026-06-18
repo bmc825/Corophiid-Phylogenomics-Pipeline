@@ -1,0 +1,1557 @@
+```{r}
+#ANCESTRAL STATE RECONSTRUCTION ANALYSIS (SILK SPINNING TRAIT)
+# By Brittany Cummings (base ASR code written by Siena McKim with help from Emily Lau)
+
+#BACKGROUND ----
+
+#ASR generates robust hypothesis about the evolutionary history of a characters. It is not an answer, read Oakley and Cunningham 2000 for more info. 
+  #it tells us about the ancestral state and potential independent/convergent origins of a trait
+  #ASR sensitive to taxon sampling, more better sampled tips, you will get a better representation
+#We need a tree that has relevant branch lengths (fore example, where the branch's' length is equal to substitutions per site)
+  #but before doing ASR we need to convert branch length to equal time. We need to make an ultrametric tree.
+  #Ultrametric: branch lengths proportional to change or time. Tips end at same point.
+  #An assumption of ASR is that expected change is due to time rather than change at a loci.
+#Types of character states
+  #discrete: absent or present, denoted by 0 or 1 respectively.
+  #continuous: range of numbers represent a spectrum of character states, denoted by 0 to some number 
+  #don't want to do a charcter with more than 3 states unless you have many tips, like >30 tips
+
+#Types of ASR:
+  #Joint: identifies set of states at all nodes that jointly maximize the probability of obtaining the set of states at each tip.
+  #Marginal: traverses tree node by node to identify which state has the highest liklihood. 
+    #This is the most common type. 
+    #can set the root state or take info from the tips to predict what the root would be. 
+  #Stochastic character modeling predicts when along the branch the state changed, can be visualized by distance curve or heat map. 
+    #need fossil data at a few nodes to do this.
+    #Harder to do since based on Bayesian statistics. 
+
+#Types of ASR models
+#there are diff model types, for discrete character states usually you use markov models. This is what we will be doing.  
+#These models assume the next character state is dependent on the current state and current state is not dependent on past states.
+  #Equal Rates (ER) model: a rate of loss and gain of are equal
+  #Symmetrical (SYM): basically a type of ER model where a rate of loss and gain are equal but cannot be used on a continous state (no more than present/absent) 
+     #SYM model is often used when there's insufficient information or no reason to believe that one direction of state change is more likely than the other.
+  #All Rates Differ (ARD): a rate of loss and gain are not equal. Where a rate from one state to another does not have equal liklihood and are independent (each state change rate is unique).
+    #this model is more accommodating if you have one state transition is more common in your ASR than others. 
+    #should be used cautiously when having smaller data set as it may become over fitted. 
+
+#Choosing an ASR model
+  #It's not always clear which model is better. So you need to test model using your data. 
+  #First test ER and ARD, the simpler one can be thought of as the null hypothesis, H0, where more complex one is the alternative hypothsis, HA. 
+  #H0: if p-value less than .05 reject and larger .05 supported
+#When you run your models on your data, you can check the Akaike information criterion (AIC) score, it measures how well a statistical model fits a data set
+#compare both model AIC scores. The model with a lower AIC is better, pick that one.
+   #you can also test models using liklihood ratio test. See if AIC and likelihood ratio test agree. But not mandatory. 
+
+#Choosing a root prior 
+#The root node of a phylogenetic tree represents the most recent common ancestor (MRCA) of all the taxa in the tree. It’s the point at which the tree is "rooted," and all lineages diverge from this node.
+  #a root prior: a prior probability distribution that is assigned to the state of the root of the phylogenetic tree before any data (like character states in extant taxa) is taken into account. 
+  #you can have an informative or an uninformative root prior
+    #informative: based of evidence; is biological informed using phylogenetic relationships.
+    #An informative root prior used commonly in marginal ASR is the maddfitz root prior. 
+      #maddfitz root prior: take into account evo dynamics, phylogenetic relationships, and rate transition.
+      #used when there are more complex evolutionary dynamics, especially when asymmetrical models are used.   
+#A uninformative root prior that is common is the yang root prior: 
+   #assumes equal likelihoods of possible states. used when evolutionary dynamics less complex (used more for binary character states)
+#Similar to models, you will want to test which root prior makes a better AIC score.
+```
+
+```{r}
+# STEP 0: DATA PREP ----
+
+# as annoying as it is, you need to prep your data before starting analysis. 
+# You need two files. 1. your phylogeny 2. your character state data frame (a .csv file)
+# 1. Take the .contree file output from IQ-TREE, root the tree, and collapse the nodes based on a 75% boostrap value threshold. This will collapse all nodes with <75% bootstrap support into a polytomy. Use the program TreeCollapseCL4.jar in commandline to do this.  
+# 2. your phylogeny needs to be imported, make sure that it is saved a .txt file 
+   # you can convert almost any tree file type (like .contree or .nexus) into a txt file 
+   # if you are dealing with a big tree file, I suggest prunning it to the clade you want to analyze. 
+   # This can be done in ITOL which I use, but I think can be done in Mesquite and other programs as well. 
+   # save your tree to the working directory 
+# 3. your character data frame is a really simple .csv file, that contains a two column table
+   # The first column are your "species" and the second column are your character "states" as either 0 or 1 (absent, present)
+   # *This is super important* make sure your species names, match exactly with the names on the phylogeny. If you get errors, a lot of times this is why. 
+   # Make sure all your specie shave a character state
+   # Export your table as a .csv file 
+
+
+```
+
+
+# Before doing the analysis, need to set up our working environment, load R packages, and data. 
+```{r}
+# STEP 1: SETTING UP ENVRIONMENT ----
+
+# make sure you have all of these packages installed. You can install them using the Package window on the right side of the R workspace. 
+# You can install from "Repository CRAN". If you don't know what this is, a quick youtube tutorial will help! 
+# install.packages("phylogram")
+# install.packages("ape")
+# install.packages("corHMM")
+# install.packages("phytools")
+# install.packages("readxl")
+library(phylogram) #allows us to read in our phylogeny
+library(ape) #provides the chronos function for making our tree ultrametric
+library(corHMM) #provide rayDISC function for ASR
+library(phytools) #allows us to do lots of stuff with our phylogeny, like plot & get node/tip info
+#if you want to see more what phytools can do, use the following command: library(help="phytools")
+library(readxl)
+
+# set working directory. This will make calling all data files easier if everything is in the same folder. 
+setwd("C:/Users/bmc82/Desktop/ASR_tutorial_Siena") #enter the path to the folder where you have saved your files 
+# fore example:setwed("User/Siena/Desktop/ASR_tutorial/folder") 
+```
+
+Collapse tree nodes with <75% bootstrap support into polytomies. You will need the TreeCollapseCL4.jar file and a file with the tip names of the outgroup clade (one per line) saved as "roots.txt".
+```{bash}
+# cd "C:\Users\bmc82\Desktop\ASR_tutorial_Siena"
+
+# java -jar TreeCollapseCL4.jar -r roots.txt -b 75 -l -t O -f mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new.contree
+
+#rename output file for your sanity
+# mv mafft-0_75coll.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new.contree final_corophioid_tree.contree
+
+```
+
+REMOVE NON-AMPHIPOD OUTGROUPS. Ecological characters were coded for AMPHIPOD taxa only, because comparable, consistently documented ecological classifications were not available across all peracarid and multicrustacean outgroups.
+
+```{r}
+# CLADES: INGROUP BY FAMILY + OUTGROUPS ----
+clades <- list(
+
+  ## ── INGROUP (COROPHIOID FAMILIES) ──────────────────────────────
+  Ampithoidae = c(
+    "Amp_lac",
+    "Pse_inc",
+    "Sun_sp1",
+    "Sun_sp2"
+  ),
+
+  Kamakidae = c(
+    "Amp_ocu"
+  ),
+
+  Aoridae = c(
+    "Aor_spp",
+    "Glo_spp",
+    "Gra_jap",
+    "Ple_rec"
+  ),
+
+  Caprellidae = c(
+    "Cap_irr",
+    "Cap_lae",
+    "Deu_cal",
+    "Met_ano",
+    "Tri_lae"
+  ),
+
+  Corophiidae = c(
+    "Che_zot",
+    "Lat_bac",
+    "Mon_ac1",
+    "Mon_ins",
+    "Pro_pru"
+  ),
+
+  Chevaliidae = c(
+    "Che_spp"
+  ),
+
+  Cyamidae = c(
+    "Cya_boo",
+    "Cya_err"
+  ),
+
+  Dulichiidae = c(
+    "Dul_spp",
+    "Dyo_arc"
+  ),
+
+  Ischyroceridae = c(
+    "Isc_an1",
+    "Isc_an2",
+    "Jas_car",
+    "Jas_mar",
+    "Mic_lit",
+    "Cer_sp1"
+  ),
+
+  Microprotopidae = c(
+    "Mic_ran"
+  ),
+
+  Paragammaropsidae = c(
+    "Par_sp1"
+  ),
+
+  Photidae = c(
+    "Gam_tho",
+    "Lat_spp",
+    "Pho_con"
+  ),
+
+  Podoceridae = c(
+    "Neo_sp1",
+    "Neo_sp2",
+    "Pod_sep",
+    "Pod_cr1",
+    "Pod_cr2",
+    "Pod_spp"
+  ),
+
+  Cheluridae = c(
+    "Tro_sp1"
+  ),
+
+  ## ── OUTGROUPS ────────────────────────────────────────────────
+  Outgroup_Amphipoda = c(
+    "Aby_dis",
+    "Ali_gig",
+    "Eus_gig",
+    "Gam_lac",
+    "Hir_gig",
+    "Hya_azt",
+    "Hyp_spp",
+    "Nip_hra",
+    "Orc_gri",
+    "Par_haw",
+    "Pla_hal",
+    "Sco_sch",
+    "Tal_sal"
+  ),
+
+  Outgroup_Peracarida = c(
+    "Aps_spp",   # Tanaidacea
+    "Lep_spp",
+    "Pho_tom",
+    "Tan_kom",
+    "Zeu_ezo",
+    "Arm_vul",   # Isopoda
+    "Ase_hil",
+    "Cym_exi",
+    "Ido_bal",
+    "Cyc_gig",   # Cumacea
+    "Dia_goe",
+    "Neo_awa"    # Mysida
+  ),
+
+  Outgroup_Crustacea = c(
+    "Tig_cal",   # Copepoda
+    "Sca_ste"    # Thecostraca
+  )
+)
+```
+
+```{r}
+tip_order <- c(
+  # ── Cyamidae / Caprellidae ─────────────────────────
+  "Cya_boo","Cya_err",
+  "Cap_irr","Cap_lae","Met_ano","Deu_cal","Tri_lae",
+
+  # ── Podoceridae / Ischyroceridae ───────────────────
+  "Isc_an1","Isc_an2",
+  "Neo_sp1","Neo_sp2","Jas_car","Jas_mar","Mic_lit",
+  "Pod_sep","Pod_cr1","Pod_cr2","Pod_spp",
+
+  # ── Ischyroceridae / Chevaliidae / Dulichiidae ─────
+  "Amp_ocu",
+  "Cer_sp1","Che_spp",
+  "Dul_spp","Dyo_arc",
+
+  # ── Ampithoidae ────────────────────────────────────
+  "Sun_sp1","Sun_sp2","Amp_lac","Pse_inc",
+
+  # ── Photidae / Microprotopidae ─────────────────────
+  "Pho_con","Lat_spp","Mic_ran","Gam_tho",
+
+  # ── Aoridae ────────────────────────────────────────
+  "Aor_spp","Glo_spp","Ple_rec","Gra_jap",
+
+  # ── Corophiidae ────────────────────────────────────
+  "Che_zot","Pro_pru","Mon_ac1","Mon_ins","Lat_bac",
+
+  # ── Amphipod outgroups ─────────────────────────────
+  "Tal_sal","Orc_gri","Pla_hal","Hya_azt","Par_haw",
+  "Nip_hra","Gam_lac","Sco_sch","Ali_gig","Eus_gig",
+  "Hir_gig","Aby_dis","Par_sp1","Hyp_spp",
+
+  # ── Peracarida / Crustacea outgroups ───────────────
+  "Ido_bal","Cym_exi","Arm_vul","Ase_hil",
+  "Dia_goe","Cyc_gig","Tan_kom","Lep_spp",
+  "Zeu_ezo","Pho_tom","Aps_spp","Neo_awa",
+  "Tig_cal","Sca_ste"
+)
+
+```
+
+```{r}
+# ── Tip label map ─────────────────────────────────────────────────────────
+tip_map <- c(
+  Dia_goe="Diastylopsis goekei", Glo_spp="Globosolembos",
+  Tal_sal="Talitrus saltador", Cap_irr="Caprella irregularis",
+  Lat_bac="Laticorophium baconi", Mic_lit="Microjassa litotes",
+  Ali_gig="Alicella gigantea", Pod_sep="Podocerus septumcarinatus",
+  Eus_gig="Eusirus giganteus", Gam_lac="Gammarus lacustris",
+  Pod_spp="Podocerus", Pod_cr1="Podocerus n. sp.",
+  Pod_cr2="Podocerus cristatus", Cym_exi="Cymothoa exigua",
+  Cyc_gig="Cyclaspis gigas", Gam_tho="Gammaropsis thompsoni",
+  Met_ano="Metacaprella anomala", Par_haw="Parhyale hawaiiensis",
+  Tri_lae="Tritella laevis", Hyp_spp="Hyperia",
+  Sca_ste="Scalpellum stearnsi", Pho_con="Photis conchicola",
+  Neo_sp1="Neoxenodice", Neo_sp2="Neoxenodice",
+  Deu_cal="Deutella californica", Sun_sp1="Sunamphitoe",
+  Sun_sp2="Sunamphitoe", Lep_spp="Leptochelia",
+  Sco_sch="Scopelocheirus schellenbergi",
+  Aby_dis="Abyssorchomene distinctus",
+  Mon_ac1="Monocorophium acherusicum",
+  Mon_ins="Monocorophium insidiosum",
+  Ido_bal="Idotea balthica", Neo_awa="Neomysis awatschensis",
+  Aps_spp="Apseudomorpha", Cer_sp1="Notopoma",
+  Jas_car="Jassa carltoni", Jas_mar="Jassa marmorata",
+  Orc_gri="Orchestia grillus", Pla_hal="Platorchestia hallaensis",
+  Che_zot="Cheirimedeia zotea", Cap_lae="Caprella laeviscula",
+  Dul_spp="Dulichia", Tig_cal="Tigriopus californicus",
+  Nip_hra="Niphargus hrabei", Hir_gig="Hirondellea gigas",
+  Pho_tom="Phoxokalliapseudes tomiokaensis",
+  Hya_azt="Hyalella azteca", Gra_jap="Grandidierella japonica",
+  Tan_kom="Tanaella kommritzia", Zeu_ezo="Zeuxo ezoensis",
+  Ase_hil="Asellus hilgendorfii", Arm_vul="Armadillidium vulgare",
+  Par_sp1="Paragammaropsis",
+  Cya_boo="Cyamus boopis", Cya_err="Cyamus erraticus",
+  Lat_spp="Latigammaropsis", Amp_lac="Ampithoe lacertosa",
+  Aor_spp="Aoroides", Mic_ran="Microprotopus raneyi",
+  Pro_pru="Protomedeia prudens", Ple_rec="Plesiolembos rectangulatus",
+  Dyo_arc="Dyopedos arcticus", Che_spp="Chevalia carpenteri",
+  Pse_inc="Pseudampithoides incurvaria",
+  Amp_ocu="Amphideutopus oculatus",
+  Isc_an1="Ischyrocerus anguipes", Isc_an2="Ischyrocerus anguipes"
+)
+```
+
+```{r}
+# STEP 2: IMPORT PHYLOGENY & MAKE ULTRAMETRIC ----
+#renamed original tree file (e.g., NUC_min75.contree) to corophioid_tree.txt
+#names on phylogeny need to match exactly with character df
+#corophioid_tree.txt file: prune branches not-of-interest taxa and change tip names as needed
+corophioid_tree <- read.tree("final_corophioid_tree.contree") #add your path to your working directory. Don't really need to do this since you set your working directory earlier but it makes me feel better to be repetetive in the R world. 
+
+# Define the outgroups
+outgroup <- c("Tal_sal","Orc_gri","Pla_hal","Hya_azt","Par_haw",
+  "Nip_hra","Gam_lac","Sco_sch","Ali_gig","Eus_gig",
+  "Hir_gig","Aby_dis","Par_sp1","Hyp_spp","Ido_bal","Cym_exi","Arm_vul","Ase_hil",
+  "Dia_goe","Cyc_gig","Tan_kom","Lep_spp",
+  "Zeu_ezo","Pho_tom","Aps_spp","Neo_awa",
+  "Tig_cal","Sca_ste")
+ 
+# Root the tree on the clade formed by these outgroups
+corophioid_tree_rooted <- root(corophioid_tree, outgroup = outgroup, resolve.root = TRUE)
+
+# ── REMOVE NON-AMPHIPOD OUTGROUPS ─────────────────────────────
+# Define non-amphipod taxa to remove
+non_amphipod <- c(
+  clades$Outgroup_Peracarida,
+  clades$Outgroup_Crustacea
+)
+
+# Drop them from the rooted tree
+corophioid_tree_trimmed <- drop.tip(
+  corophioid_tree_rooted,
+  non_amphipod
+)
+#sanity check to see which groups were dropped
+setdiff(non_amphipod, corophioid_tree_trimmed$tip.label)
+
+# Remove singleton nodes (these may pop up after trimming)
+corophioid_tree_pruned <- collapse.singles(corophioid_tree_trimmed)
+
+plot(corophioid_tree_pruned)
+
+is.rooted(corophioid_tree_pruned) #TRUE
+#create ultrametric tree with correlated model. Lambda smoothing parameter, model specifies model of sub rate variation among branches correlated
+corophioid_tree_chrono <- chronos(corophioid_tree_pruned, lambda = 1, model = "correlated")
+# test if tree is ultrametric
+ultratree.corophioid <- read.tree(text=write.tree(corophioid_tree_chrono)) 
+is.ultrametric(ultratree.corophioid) # want to see "TRUE" returned. It is!
+plot(corophioid_tree_chrono) #take a look, see tips end in same place
+nodelabels() #double checking no hidden nodes. 
+# It's also good to know which nodes are what number for later in the analysis when looking at state transition info
+```
+
+-----------------------
+TRAIT A: SILK SPINNING SYSTEM
+```{r}
+# STEP 3: IMPORT CHARACTER TABLE, ASSIGN COLORS, & CHECK LABELING ----
+
+# Here I am doing ASR on the silk extrusion mode of silk-spinning corophioid amphipods. My character is dactylus slits (do they or do they not have a slit at the tip of their silk-spinning legs). 
+# The states are as followed: 0 = antenna peduncle short, 1 = antenna peduncle lengthened, ? = unknown and omitted from analysis
+# I import my character table as a .xlsx file so that I can have all my characters in one file. Otherwise, make a separate .csv file for each character. 
+dslit_states <- read_excel("Corophioid_characters.xlsx", sheet = "A") #add your path to your working directory
+dslit_df <- data.frame(dslit_states) #convert table into a data frame 
+summary(dslit_df) #take a look at the data frame. 
+
+#Reorder data to your liking
+cur <- corophioid_tree_chrono$tip.label
+want <- dslit_df$Species  # from your data frame
+
+# keep only tips present in the tree, in data order; then append any leftovers
+target <- c(want[want %in% cur], setdiff(cur, want))
+
+stopifnot(setequal(target, cur), length(target) == length(cur))
+corophioid_tree_chrono <- ape::rotateConstr(corophioid_tree_chrono, target)
+
+
+plot(corophioid_tree_chrono) #double check I have my tree
+nodelabels() #double checking no hidden nodes
+
+dslit_state_colors <- c("white", "#009E73") #assign colors to each state. The first state should always be the "absent" state or 0. Here it will be white, and present will be orange.
+dslit_tip_state_colors <- c("white", "#009E73") #assign the same colors to the tip of the branches to show the state of the extant taxa. 
+
+# Assuming your character data frame has a column with species names and a column with states
+# e.g., dslit_df$species and dslit_df$state
+
+# Match the character states to the tree tips
+matched_states <- dslit_df$state[match(corophioid_tree_chrono$tip.label, dslit_df$Species)]
+
+idx <- suppressWarnings(as.numeric(matched_states) + 1)  # 0->1, 1->2, 2->3
+dslit_tip_state_colors <- ifelse(is.na(idx), "grey80", dslit_state_colors[idx])
+
+# sanity checks + plot
+corophioid_tree_chrono$tip.label
+length(dslit_tip_state_colors) == length(corophioid_tree_chrono$tip.label)
+
+plot(corophioid_tree_chrono, show.tip.label = TRUE)
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "black", cex = 1.5, offset = -0.03)
+```
+
+
+```{r}
+# STEP 4: ASR!!! ----
+
+# Now for the actual analysis!!! 
+# We will be using rayDISC for the ASR analysis
+# Here is the set up for the code for analysis: 
+# name <- rayDISC(tree.file, dataframe, 
+#                             model = "modeltype", node.states = "marginal",
+#                             state.recon = "subsequently", root.p = "")
+# name denotes the name of the analysis, usually I put fitcor<modelname>.<rootprior>
+# the function rayDISC is used for ASR analysis
+# model will be ARD or ER, node.states is marginal, state.recon is subsequently & root.p is either yang or maddfitz. 
+#after running ASR analysis, call the output to see our AIC score
+   #sometimes, it's helpful to record the AICc (corrected AIC) if you have a lot of data
+# You want to check the marginal probability of the states at each node to make sure they are higher than .50 (50%)
+# Having a bigger marginal probability, is like saying the probaility that it was this state is higher based on the information/data
+# This is the meat of the analysis, where you are actually seeing what is the probability of one state over another at a node, showing what state is reconstructed.
+# <name.of.anylis>$states
+  # Whenever you see a "$" symbol, it's indicating at column within a data frame. So here I want to call the states column within the ASR analysis (data frame). 
+  # its extra important to check state probabilities when you have more than 2 states because to be significant you want a value to be higher than a certain threshold. In 3 states, at least larger than .65 
+# Now the fun part! plotting the tree. Make sure to use the ultrametric-transformed tree
+# PlotTree(name.of.tree)
+    #add the node state probabilites as pie charts at each node, with the piecolor correspoding to the state colors we selected earlier   
+    # nodelabels(pie = <model.name>$states, piecol = <name.of.state.colors.object>)
+# And I like to add the tiplabels of the states at each tip, so I know which extant taxa have which state
+    #tiplabels(pch = <font size #>, bg = <tip.state.colors>, col = "<a color>", cex = <#>, offset = <#>)
+    # pch is a numeric that represent a symbol (in this case, I want 21, which is a circle)
+    # bg a charcter string giving the color to be used for the background of the polotting symboles
+    # col is the name of a color used for the outline of the tip symbol
+    # cex number that alter size of text
+    # offset, how much to offset the tip labels (place them better on the plot)
+# There you have it! You have you analysis info that you need (node state probabilities & AIC scores) & you create a pretty ASR plot that visualizes the reconstructed states.
+
+# Now for the actual examples
+# Each code chunk below will represent a different model/root prior combo that I'm testing. Which ever one has the lowest AIC score is the winner. 
+
+# ER MODEL, MADDFITZ ROOT PRIOR
+fitcorER.maddfitz <- rayDISC(corophioid_tree_chrono, dslit_df, 
+                             model = "ER", node.states = "marginal",
+                             state.recon = "subsequently", root.p = "maddfitz")
+fitcorER.maddfitz # AIC 12.84269 AICc 13.34269 not bad!
+fitcorER.maddfitz$states #good! node 9 state 1 is .92 & node 8 is .85
+plotTree(corophioid_tree_chrono) #visualize
+nodelabels(pie = fitcorER.maddfitz$states, piecol = dslit_state_colors) #add probability pies to node
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "black", cex = 1.5, offset = -0.03)
+
+# ER MODEL, YANG ROOT PRIOR
+fitcorER.yang <- rayDISC(corophioid_tree_chrono, dslit_df, 
+                         model = "ER", node.states = "marginal",
+                         state.recon = "subsequently", root.p = "yang")
+fitcorER.yang# AIC 14.21202 AICc 14.71202
+fitcorER.yang$states # expected, not as good as maddfitz rootprior
+plotTree(corophioid_tree_chrono) #visualize
+nodelabels(pie = fitcorER.yang$states, piecol = dslit_state_colors) #add probability pies to node
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "black", cex = 1.5, offset = -0.03)
+
+# ARD MODEL, MADDFITZ ROOT PRIOR  (spoiler alert, this one is the best model with the lowest AIC score)
+fitcorARD.maddfitz <- rayDISC(corophioid_tree_chrono, dslit_df, 
+                              model = "ARD", node.states = "marginal",
+                              state.recon = "subsequently", root.p = "maddfitz")
+fitcorARD.maddfitz # AIC 14.84264 16.55692
+fitcorARD.maddfitz$states #Expected marginal probabiities, similar to ER analysis
+plotTree(corophioid_tree_chrono) #visualize
+nodelabels(pie = fitcorARD.maddfitz$states, piecol = dslit_state_colors) #add probability pies to node
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "black", cex = 1.5, offset = -0.03)
+
+# ARD MODEL, YANG ROOT PRIOR
+fitcorARD.yang <- rayDISC(corophioid_tree_chrono, dslit_df, 
+                              model = "ARD", node.states = "marginal",
+                              state.recon = "subsequently", root.p = "yang")
+fitcorARD.yang # AIC 14.84264 16.55692
+fitcorARD.yang$states #Expected marginal probabiities, similar to ER analysis
+plotTree(corophioid_tree_chrono) #visualize
+nodelabels(pie = fitcorARD.yang$states, piecol = dslit_state_colors) #add probability pies to node
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "black", cex = 1.5, offset = -0.03)
+
+```
+
+
+
+
+
+# There we have it, we tested 3 ASR model analyses, we found that the ER model with maddfitz root prior was the best one. 
+# We can now interpret this result with an evolutionary/biological context. Here, we can see that antenna peduncle length is likely the ancestral state in the common ancestor of the Photoid/Ampithoid/Cerapus/Podocerid/Caprellid/Ischyrocerid/Neoxenodice clade and was lost in the Ampithoid clade. 
+# And, that antenna peduncle length is not ancestral in the common ancestor of corophioid amphipods (the oldest node). antenna peduncle length is also likely not convergent. 
+   # keep in mind, that if more taxa are added on the tree (and their state information), the analysis/story may change.
+   # That's why it's important to have as many representative taxa/tips as possible. 
+
+# Now we can use the outputted plot as our visual representation of the analysis. 
+  # generally, you don't use this raw Rplot for publications. you can copy it onto your clipboard and edit it in design softwares like Adobe Illustrator.  
+  # but, if you choose to only use Rstudio to generate the plot, I recommend learning more about R-packages & functions that can make it more aesthetically pleasing. 
+# When you report your analysis in like a paper or a presentation, it's best to say what type of ASR you did (marginal, subsequentialy with X model & X root prior) 
+# And best to report how you determined the best model (the one with lowest AIC), and report important marginal probabilities.
+
+# There are many ways to do ASR analysis, this is the way I have learned! So keep learning :) you don't have to do it just this way. 
+
+
+#Publication ready plot
+```{r}
+
+
+# PLOT ASR TREE WITH RECTANGULAR LAYOUT ----
+
+# use the exact tree used by rayDISC
+# first, save as unique for future reference
+fit_A <- fitcorER.maddfitz
+
+tree_plot <- fit_A$phy
+
+tree_plot <- ape::rotateConstr(tree_plot, rev(tip_order))
+tree_plot <- ape::reorder.phylo(tree_plot, order = "cladewise")
+
+
+# node ids in this (current) tree
+nodes <- (Ntip(tree_plot) + 1):(Ntip(tree_plot) + tree_plot$Nnode)
+
+# (safe) order pies to those nodes if row names exist
+M <- fit_A$states
+if (!is.null(rownames(M))) {
+  M <- M[match(nodes, as.integer(rownames(M))), , drop = FALSE]
+}
+
+# rebuild tip colors for this tree's tip order
+matched_states <- dslit_df$state[match(tree_plot$tip.label, dslit_df$Species)]
+idx <- suppressWarnings(as.integer(matched_states) + 1)
+dslit_tip_state_colors <- ifelse(is.na(idx), "grey80", dslit_state_colors[idx])
+
+png('ASR_A.png', height=6000, width=7000, pointsize=8, res=600)
+ 
+# Set plot margins and layout
+par(
+  mar = c(1, 1, 1, 1),
+  bg  = "black",
+  col = "white",
+  col.axis = "white",
+  col.lab  = "white",
+  col.main = "white",
+  fg  = "white"
+)
+
+# Plot the tree, turn off tip labels for manual control
+plotTree(tree_plot, type = "phylogram", ftype = "i", fsize = 0.7, lwd = 2.5, offset = 0.4, color = "white")
+
+# Add ASR node pie charts (now pinned to node ids)
+nodelabels(pie = M, node = nodes, piecol = dslit_state_colors, cex = 0.3)
+
+# Add tip state symbols
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "white", cex = 1.5)
+
+# Optional: Add a legend if needed
+legend("topleft", 
+       title = "Silk spinning system",
+       legend = c("Absent",
+                  "Present"),
+       pt.bg = dslit_state_colors, pch = 22, pt.cex = 2, bty = "n")
+
+dev.off()
+```
+
+
+#Pretty ASR tree for paper that matches style of full tree
+```{r}
+suppressPackageStartupMessages({
+  library(ape)
+  library(phytools)
+})
+
+# ────────────────────────────────────────────────
+# STYLE KNOBS (tune these)
+# ────────────────────────────────────────────────
+TREE_LWD      <- 4.2    # branch thickness (ref figure is thick)
+TIP_FSIZE     <- 1.5   # tip label size (smaller than your 1.2)
+TIP_FONT      <- 3      # 3 = italic, 1 = plain
+TIP_OFFSET    <- 0.85   # space between tips and their labels
+NODE_CEX      <- 0.6   # node pie size
+TIP_PCH_CEX   <- 3   # tip symbol size
+LEG_TEXT_CEX  <- 1.8    # legend text size (ref figure has big legend)
+LEG_PT_CEX    <- 3.4    # legend symbol size
+LEG_Y_INTERSP <- 1.35   # legend line spacing
+
+# more vertical breathing room -> increase HEIGHT (not mar)
+PNG_W <- 4200
+PNG_H <- 7000
+PNG_R <- 400
+
+# ────────────────────────────────────────────────
+# Use rayDISC tree directly
+# ────────────────────────────────────────────────
+fit_E <- fitcorER.maddfitz
+tree_plot <- fit_E$phy
+
+# STRUCTURAL MIRROR (your original)
+tree_plot <- ape::rotateConstr(tree_plot, rev(tip_order))
+tree_plot <- ape::reorder.phylo(tree_plot, order = "cladewise")
+
+# Node IDs
+nodes <- (Ntip(tree_plot) + 1):(Ntip(tree_plot) + tree_plot$Nnode)
+
+# Align state matrix rows safely
+M <- fit_E$states
+if (!is.null(rownames(M))) {
+  M <- M[match(nodes, as.integer(rownames(M))), , drop = FALSE]
+}
+
+# ────────────────────────────────────────────────
+# Match tip states (USING INTERNAL CODES)
+# ────────────────────────────────────────────────
+matched_states <- dslit_df$state[
+  match(tree_plot$tip.label, dslit_df$Species)
+]
+idx <- suppressWarnings(as.integer(matched_states) + 1)
+
+dslit_tip_state_colors <- ifelse(
+  is.na(idx),
+  "grey80",
+  dslit_state_colors[idx]
+)
+
+# ────────────────────────────────────────────────
+# Convert tip labels to pretty names AFTER matching
+# ────────────────────────────────────────────────
+pretty_labels <- tip_map[tree_plot$tip.label]
+tree_plot$tip.label <- ifelse(
+  is.na(pretty_labels),
+  tree_plot$tip.label,
+  pretty_labels
+)
+
+# ────────────────────────────────────────────────
+# Plot
+# ────────────────────────────────────────────────
+png("ASR_A_silk.png",
+    width  = PNG_W,
+    height = PNG_H,
+    res    = PNG_R,
+    bg     = "white")
+
+par(
+  mar = c(1, 1, 1, 1),
+  bg  = "white",
+  col = "black"
+)
+
+plotTree(
+  tree_plot,
+  type   = "phylogram",
+  ftype  = "i",
+  fsize  = TIP_FSIZE,
+  font   = TIP_FONT,
+  lwd    = TREE_LWD,
+  offset = TIP_OFFSET
+)
+
+# Node pies
+nodelabels(
+  pie    = M,
+  node   = nodes,
+  piecol = dslit_state_colors,
+  cex    = NODE_CEX
+)
+
+# Tip symbols
+tiplabels(
+  pch = 21,
+  bg  = dslit_tip_state_colors,
+  col = "black",
+  cex = TIP_PCH_CEX
+)
+
+legend(
+  "topleft",
+  title = "Silk spinning system",
+  legend = c("Absent", "Present"),
+  pt.bg     = dslit_state_colors,
+  pch       = 22,
+  pt.cex    = LEG_PT_CEX,
+  cex       = LEG_TEXT_CEX,
+  bty       = "n",
+  y.intersp = LEG_Y_INTERSP
+)
+
+dev.off()
+
+
+```
+
+
+#Pretty ASR tree for presentation that matches style of full tree
+```{r}
+suppressPackageStartupMessages({
+  library(ape)
+  library(phytools)
+})
+
+# ────────────────────────────────────────────────
+# STYLE KNOBS
+# ────────────────────────────────────────────────
+TREE_LWD      <- 4.2
+TIP_FSIZE     <- 1.5
+TIP_FONT      <- 3
+TIP_OFFSET    <- 0.85
+NODE_CEX      <- 0.7        # 🔑 slightly bigger (fixes inner circle issue)
+TIP_PCH_CEX   <- 3
+LEG_TEXT_CEX  <- 1.8
+LEG_PT_CEX    <- 3.4
+LEG_Y_INTERSP <- 1.35
+
+PNG_W <- 4200
+PNG_H <- 7000
+PNG_R <- 400
+
+# ────────────────────────────────────────────────
+# Tree + ASR
+# ────────────────────────────────────────────────
+fit_E <- fitcorER.maddfitz
+tree_plot <- fit_E$phy
+
+tree_plot <- ape::rotateConstr(tree_plot, tip_order)
+tree_plot <- ape::reorder.phylo(tree_plot, order = "cladewise")
+
+nodes <- (Ntip(tree_plot) + 1):(Ntip(tree_plot) + tree_plot$Nnode)
+
+M <- fit_E$states
+if (!is.null(rownames(M))) {
+  M <- M[match(nodes, as.integer(rownames(M))), , drop = FALSE]
+}
+
+# ────────────────────────────────────────────────
+# Tip states
+# ────────────────────────────────────────────────
+matched_states <- dslit_df$state[
+  match(tree_plot$tip.label, dslit_df$Species)
+]
+idx <- suppressWarnings(as.integer(matched_states) + 1)
+
+dslit_tip_state_colors <- ifelse(
+  is.na(idx),
+  "grey80",
+  dslit_state_colors[idx]
+)
+
+# Pretty labels
+pretty_labels <- tip_map[tree_plot$tip.label]
+tree_plot$tip.label <- ifelse(
+  is.na(pretty_labels),
+  tree_plot$tip.label,
+  pretty_labels
+)
+
+# ────────────────────────────────────────────────
+# Plot
+# ────────────────────────────────────────────────
+png("ASR_A_silk_black.png",
+    width  = PNG_W,
+    height = PNG_H,
+    res    = PNG_R,
+    bg     = "transparent")
+
+par(
+  mar = c(1, 1, 1, 1),
+  bg  = NA,
+  col = "white",
+  fg  = "white"
+)
+
+plotTree(
+  tree_plot,
+  type   = "phylogram",
+  ftype  = "i",
+  fsize  = TIP_FSIZE,
+  font   = TIP_FONT,
+  lwd    = TREE_LWD,
+  offset = TIP_OFFSET,
+  color  = "white"
+)
+
+# ────────────────────────────────────────────────
+# Node pies
+# ────────────────────────────────────────────────
+nodelabels(
+  pie    = M,
+  node   = nodes,
+  piecol = dslit_state_colors,
+  cex    = NODE_CEX
+)
+
+# 🔑 WHITE OUTLINES (same fix as before)
+coords <- get("last_plot.phylo", envir = .PlotPhyloEnv)
+
+points(
+  coords$xx[nodes],
+  coords$yy[nodes],
+  pch = 21,
+  bg  = NA,
+  col = "white",
+  lwd = 1.2,              # 🔑 thinner outline (reduces inner circle effect)
+  cex = NODE_CEX * 1.08   # 🔑 slight halo, not too strong
+)
+
+# ────────────────────────────────────────────────
+# Tip symbols
+# ────────────────────────────────────────────────
+tiplabels(
+  pch = 21,
+  bg  = dslit_tip_state_colors,
+  col = "white",
+  lwd = 1.5,
+  cex = TIP_PCH_CEX
+)
+
+# ────────────────────────────────────────────────
+# Legend
+# ────────────────────────────────────────────────
+legend(
+  "bottomleft",
+  title = "Silk spinning system",
+  legend = c("Absent", "Present"),
+  pt.bg     = dslit_state_colors,
+  pch       = 22,
+  pt.cex    = LEG_PT_CEX,
+  cex       = LEG_TEXT_CEX,
+  bty       = "n",
+  y.intersp = LEG_Y_INTERSP,
+  text.col  = "white",
+  title.col = "white"
+)
+
+dev.off()
+```
+
+
+
+Repeat for associated ecological trait:
+-----------------------
+TRAIT E: ENCLOSURE STRATEGY
+```{r}
+# STEP 3: IMPORT CHARACTER TABLE, ASSIGN COLORS, & CHECK LABELING ----
+
+# Here I am doing ASR on the silk extrusion mode of silk-spinning corophioid amphipods. My character is dactylus slits (do they or do they not have a slit at the tip of their silk-spinning legs). 
+# The states are as followed: 0 = antenna peduncle short, 1 = antenna peduncle lengthened, ? = unknown and omitted from analysis
+# I import my character table as a .xlsx file so that I can have all my characters in one file. Otherwise, make a separate .csv file for each character. 
+dslit_states <- read_excel("Corophioid_characters.xlsx", sheet = "E") #add your path to your working directory
+dslit_df <- data.frame(dslit_states) #convert table into a data frame 
+summary(dslit_df) #take a look at the data frame. 
+
+#Reorder data to your liking
+cur <- corophioid_tree_chrono$tip.label
+want <- dslit_df$Species  # from your data frame
+
+# keep only tips present in the tree, in data order; then append any leftovers
+target <- c(want[want %in% cur], setdiff(cur, want))
+
+stopifnot(setequal(target, cur), length(target) == length(cur))
+corophioid_tree_chrono <- ape::rotateConstr(corophioid_tree_chrono, target)
+
+
+plot(corophioid_tree_chrono) #double check I have my tree
+nodelabels() #double checking no hidden nodes
+
+dslit_state_colors <- c("white", "#009E73","#002E22") #assign colors to each state. The first state should always be the "absent" state or 0. Here it will be white, and present will be orange.
+dslit_tip_state_colors <- c("white", "#009E73","#002E22") #assign the same colors to the tip of the branches to show the state of the extant taxa. 
+
+# Assuming your character data frame has a column with species names and a column with states
+# e.g., dslit_df$species and dslit_df$state
+
+# Match the character states to the tree tips
+matched_states <- dslit_df$state[match(corophioid_tree_chrono$tip.label, dslit_df$Species)]
+
+idx <- suppressWarnings(as.numeric(matched_states) + 1)  # 0->1, 1->2, 2->3
+dslit_tip_state_colors <- ifelse(is.na(idx), "grey80", dslit_state_colors[idx])
+
+# sanity checks + plot
+corophioid_tree_chrono$tip.label
+length(dslit_tip_state_colors) == length(corophioid_tree_chrono$tip.label)
+
+plot(corophioid_tree_chrono, show.tip.label = TRUE)
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "black", cex = 1.5, offset = -0.03)
+```
+
+```{r}
+# STEP 4: ASR!!! ----
+
+# ER MODEL, MADDFITZ ROOT PRIOR (spoiler alert, this one is the best model with the lowest AIC score)
+fitcorER.maddfitz <- rayDISC(corophioid_tree_chrono, dslit_df, 
+                             model = "ER", node.states = "marginal",
+                             state.recon = "subsequently", root.p = "maddfitz")
+fitcorER.maddfitz # AIC 12.84269 AICc 13.34269 not bad!
+fitcorER.maddfitz$states #good! node 9 state 1 is .92 & node 8 is .85
+plotTree(corophioid_tree_chrono) #visualize
+nodelabels(pie = fitcorER.maddfitz$states, piecol = dslit_state_colors) #add probability pies to node
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "black", cex = 1.5, offset = -0.03)
+
+# ER MODEL, YANG ROOT PRIOR
+fitcorER.yang <- rayDISC(corophioid_tree_chrono, dslit_df, 
+                         model = "ER", node.states = "marginal",
+                         state.recon = "subsequently", root.p = "yang")
+fitcorER.yang# AIC 14.21202 AICc 14.71202
+fitcorER.yang$states # expected, not as good as maddfitz rootprior
+plotTree(corophioid_tree_chrono) #visualize
+nodelabels(pie = fitcorER.yang$states, piecol = dslit_state_colors) #add probability pies to node
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "black", cex = 1.5, offset = -0.03)
+
+# ARD MODEL, MADDFITZ ROOT PRIOR 
+fitcorARD.maddfitz <- rayDISC(corophioid_tree_chrono, dslit_df, 
+                              model = "ARD", node.states = "marginal",
+                              state.recon = "subsequently", root.p = "maddfitz")
+fitcorARD.maddfitz # AIC 14.84264 16.55692
+fitcorARD.maddfitz$states #Expected marginal probabiities, similar to ER analysis
+plotTree(corophioid_tree_chrono) #visualize
+nodelabels(pie = fitcorARD.maddfitz$states, piecol = dslit_state_colors) #add probability pies to node
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "black", cex = 1.5, offset = -0.03)
+
+# ARD MODEL, YANG ROOT PRIOR
+fitcorARD.yang <- rayDISC(corophioid_tree_chrono, dslit_df, 
+                              model = "ARD", node.states = "marginal",
+                              state.recon = "subsequently", root.p = "yang")
+fitcorARD.yang # AIC 14.84264 16.55692
+fitcorARD.yang$states #Expected marginal probabiities, similar to ER analysis
+plotTree(corophioid_tree_chrono) #visualize
+nodelabels(pie = fitcorARD.yang$states, piecol = dslit_state_colors) #add probability pies to node
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "black", cex = 1.5, offset = -0.03)
+
+```
+
+```{r}
+# PLOT ASR TREE WITH RECTANGULAR LAYOUT ----
+
+# use the exact tree used by rayDISC
+# first, save as unique for future reference
+fit_E <- fitcorER.maddfitz
+
+tree_plot <- fit_E$phy
+
+tree_plot <- ape::rotateConstr(tree_plot, rev(tip_order))
+tree_plot <- ape::reorder.phylo(tree_plot, order = "cladewise")
+
+# node ids in this (current) tree
+nodes <- (Ntip(tree_plot) + 1):(Ntip(tree_plot) + tree_plot$Nnode)
+
+# (safe) order pies to those nodes if row names exist
+M <- fit_E$states
+if (!is.null(rownames(M))) {
+  M <- M[match(nodes, as.integer(rownames(M))), , drop = FALSE]
+}
+
+# rebuild tip colors for this tree's tip order
+matched_states <- dslit_df$state[match(tree_plot$tip.label, dslit_df$Species)]
+idx <- suppressWarnings(as.integer(matched_states) + 1)
+dslit_tip_state_colors <- ifelse(is.na(idx), "grey80", dslit_state_colors[idx])
+
+png('ASR_E.png', height=6000, width=7000, pointsize=8, res=600)
+ 
+# Set plot margins and layout
+par(
+  mar = c(1, 1, 1, 1),
+  bg  = "black",
+  col = "white",
+  col.axis = "white",
+  col.lab  = "white",
+  col.main = "white",
+  fg  = "white"
+)
+
+# Plot the tree, turn off tip labels for manual control
+plotTree(tree_plot, type = "phylogram", ftype = "i", fsize = 0.7, lwd = 2.5, offset = 0.4, color = "white")
+
+# Add ASR node pie charts (now pinned to node ids)
+nodelabels(pie = M, node = nodes, piecol = dslit_state_colors, cex = 0.3)
+
+# Add tip state symbols
+tiplabels(pch = 21, bg = dslit_tip_state_colors, col = "white", cex = 1.5)
+
+# Optional: Add a legend if needed
+legend("topleft",
+       title = "Silk structure",
+       legend = c("None",
+                  "Tube",
+                  "Domicile"),
+       pt.bg = dslit_state_colors, pch = 22, pt.cex = 2, bty = "n")
+
+dev.off()
+
+
+```
+
+
+#Pretty ASR tree for paper that matches style of full tree
+```{r}
+suppressPackageStartupMessages({
+  library(ape)
+  library(phytools)
+})
+
+# ────────────────────────────────────────────────
+# STYLE KNOBS (tune these)
+# ────────────────────────────────────────────────
+TREE_LWD      <- 4.2    # branch thickness (ref figure is thick)
+TIP_FSIZE     <- 1.5   # tip label size (smaller than your 1.2)
+TIP_FONT      <- 3      # 3 = italic, 1 = plain
+TIP_OFFSET    <- 0.85   # space between tips and their labels
+NODE_CEX      <- 0.6   # node pie size
+TIP_PCH_CEX   <- 3   # tip symbol size
+LEG_TEXT_CEX  <- 1.8    # legend text size (ref figure has big legend)
+LEG_PT_CEX    <- 3.4    # legend symbol size
+LEG_Y_INTERSP <- 1.35   # legend line spacing
+
+# more vertical breathing room -> increase HEIGHT (not mar)
+PNG_W <- 4200
+PNG_H <- 7000
+PNG_R <- 400
+
+# ────────────────────────────────────────────────
+# Use rayDISC tree directly
+# ────────────────────────────────────────────────
+fit_E <- fitcorER.maddfitz
+tree_plot <- fit_E$phy
+
+# STRUCTURAL MIRROR (your original)
+tree_plot <- ape::rotateConstr(tree_plot, rev(tip_order))
+tree_plot <- ape::reorder.phylo(tree_plot, order = "cladewise")
+
+# Node IDs
+nodes <- (Ntip(tree_plot) + 1):(Ntip(tree_plot) + tree_plot$Nnode)
+
+# Align state matrix rows safely
+M <- fit_E$states
+if (!is.null(rownames(M))) {
+  M <- M[match(nodes, as.integer(rownames(M))), , drop = FALSE]
+}
+
+# ────────────────────────────────────────────────
+# Match tip states (USING INTERNAL CODES)
+# ────────────────────────────────────────────────
+matched_states <- dslit_df$state[
+  match(tree_plot$tip.label, dslit_df$Species)
+]
+idx <- suppressWarnings(as.integer(matched_states) + 1)
+
+dslit_tip_state_colors <- ifelse(
+  is.na(idx),
+  "grey80",
+  dslit_state_colors[idx]
+)
+
+# ────────────────────────────────────────────────
+# Convert tip labels to pretty names AFTER matching
+# ────────────────────────────────────────────────
+pretty_labels <- tip_map[tree_plot$tip.label]
+tree_plot$tip.label <- ifelse(
+  is.na(pretty_labels),
+  tree_plot$tip.label,
+  pretty_labels
+)
+
+# ────────────────────────────────────────────────
+# Plot
+# ────────────────────────────────────────────────
+png("ASR_E_enclosure.png",
+    width  = PNG_W,
+    height = PNG_H,
+    res    = PNG_R,
+    bg     = "white")
+
+par(
+  mar = c(1, 1, 1, 1),
+  bg  = "white",
+  col = "black"
+)
+
+plotTree(
+  tree_plot,
+  type   = "phylogram",
+  ftype  = "i",
+  fsize  = TIP_FSIZE,
+  font   = TIP_FONT,
+  lwd    = TREE_LWD,
+  offset = TIP_OFFSET
+)
+
+# Node pies
+nodelabels(
+  pie    = M,
+  node   = nodes,
+  piecol = dslit_state_colors,
+  cex    = NODE_CEX
+)
+
+# Tip symbols
+tiplabels(
+  pch = 21,
+  bg  = dslit_tip_state_colors,
+  col = "black",
+  cex = TIP_PCH_CEX
+)
+
+legend(
+  "topleft",
+  title = "Silk structure",
+  legend    = c("None", "Tube", "Domicile"),
+  pt.bg     = dslit_state_colors,
+  pch       = 22,
+  pt.cex    = LEG_PT_CEX,
+  cex       = LEG_TEXT_CEX,
+  bty       = "n",
+  y.intersp = LEG_Y_INTERSP
+)
+
+dev.off()
+
+```
+
+#Pretty ASR tree for presentation that matches style of full tree
+```{r}
+suppressPackageStartupMessages({
+  library(ape)
+  library(phytools)
+})
+
+# ────────────────────────────────────────────────
+# STYLE KNOBS
+# ────────────────────────────────────────────────
+TREE_LWD      <- 4.2
+TIP_FSIZE     <- 1.5
+TIP_FONT      <- 3
+TIP_OFFSET    <- 0.85
+NODE_CEX      <- 0.7
+TIP_PCH_CEX   <- 3
+LEG_TEXT_CEX  <- 1.8
+LEG_PT_CEX    <- 3.4
+LEG_Y_INTERSP <- 1.35
+
+PNG_W <- 4200
+PNG_H <- 7000
+PNG_R <- 400
+
+# ────────────────────────────────────────────────
+# Tree + ASR
+# ────────────────────────────────────────────────
+fit_E <- fitcorER.maddfitz
+tree_plot <- fit_E$phy
+
+tree_plot <- ape::rotateConstr(tree_plot, tip_order)
+tree_plot <- ape::reorder.phylo(tree_plot, order = "cladewise")
+
+nodes <- (Ntip(tree_plot) + 1):(Ntip(tree_plot) + tree_plot$Nnode)
+
+M <- fit_E$states
+if (!is.null(rownames(M))) {
+  M <- M[match(nodes, as.integer(rownames(M))), , drop = FALSE]
+}
+
+# ────────────────────────────────────────────────
+# Tip states
+# ────────────────────────────────────────────────
+matched_states <- dslit_df$state[
+  match(tree_plot$tip.label, dslit_df$Species)
+]
+idx <- suppressWarnings(as.integer(matched_states) + 1)
+
+dslit_tip_state_colors <- ifelse(
+  is.na(idx),
+  "grey80",
+  dslit_state_colors[idx]
+)
+
+# Pretty labels
+pretty_labels <- tip_map[tree_plot$tip.label]
+tree_plot$tip.label <- ifelse(
+  is.na(pretty_labels),
+  tree_plot$tip.label,
+  pretty_labels
+)
+
+# ────────────────────────────────────────────────
+# Plot
+# ────────────────────────────────────────────────
+png("ASR_E_enclosure_black.png",
+    width  = PNG_W,
+    height = PNG_H,
+    res    = PNG_R,
+    bg     = "transparent")
+
+par(
+  mar = c(1, 1, 1, 1),
+  bg  = NA,
+  col = "white",
+  fg  = "white"
+)
+
+plotTree(
+  tree_plot,
+  type   = "phylogram",
+  ftype  = "i",
+  fsize  = TIP_FSIZE,
+  font   = TIP_FONT,
+  lwd    = TREE_LWD,
+  offset = TIP_OFFSET,
+  color  = "white"
+)
+
+# ────────────────────────────────────────────────
+# Node pies
+# ────────────────────────────────────────────────
+nodelabels(
+  pie    = M,
+  node   = nodes,
+  piecol = dslit_state_colors,
+  cex    = NODE_CEX
+)
+
+# 🔑 ADD WHITE OUTLINES (this is the fix)
+coords <- get("last_plot.phylo", envir = .PlotPhyloEnv)
+
+points(
+  coords$xx[nodes],
+  coords$yy[nodes],
+  pch = 21,
+  bg  = NA,
+  col = "white",
+  lwd = 1.2,
+  cex = NODE_CEX * 1.05
+)
+
+# ────────────────────────────────────────────────
+# Tip symbols
+# ────────────────────────────────────────────────
+tiplabels(
+  pch = 21,
+  bg  = dslit_tip_state_colors,
+  col = "white",
+  lwd = 1.5,
+  cex = TIP_PCH_CEX
+)
+
+# ────────────────────────────────────────────────
+# Legend
+# ────────────────────────────────────────────────
+legend(
+  "bottomleft",
+  title = "Silk structure",
+  legend    = c("None", "Tube", "Domicile"),
+  pt.bg     = dslit_state_colors,
+  pch       = 22,
+  pt.cex    = LEG_PT_CEX,
+  cex       = LEG_TEXT_CEX,
+  bty       = "n",
+  y.intersp = LEG_Y_INTERSP,
+  text.col  = "white",
+  title.col = "white"
+)
+
+dev.off()
+
+```
+
+#Pretty ASR tree for presentation with no node circles
+```{r}
+suppressPackageStartupMessages({
+  library(ape)
+  library(phytools)
+})
+
+# ────────────────────────────────────────────────
+# STYLE KNOBS
+# ────────────────────────────────────────────────
+TREE_LWD      <- 4.2
+TIP_FSIZE     <- 1.5
+TIP_FONT      <- 3
+TIP_OFFSET    <- 0.85
+TIP_PCH_CEX   <- 3
+LEG_TEXT_CEX  <- 1.8
+LEG_PT_CEX    <- 3.4
+LEG_Y_INTERSP <- 1.35
+
+PNG_W <- 4200
+PNG_H <- 7000
+PNG_R <- 400
+
+# ────────────────────────────────────────────────
+# Tree + ASR
+# ────────────────────────────────────────────────
+fit_E <- fitcorER.maddfitz
+tree_plot <- fit_E$phy
+
+tree_plot <- ape::rotateConstr(tree_plot, tip_order)
+tree_plot <- ape::reorder.phylo(tree_plot, order = "cladewise")
+
+nodes <- (Ntip(tree_plot) + 1):(Ntip(tree_plot) + tree_plot$Nnode)
+
+M <- fit_E$states
+if (!is.null(rownames(M))) {
+  M <- M[match(nodes, as.integer(rownames(M))), , drop = FALSE]
+}
+
+# ────────────────────────────────────────────────
+# Tip states
+# ────────────────────────────────────────────────
+matched_states <- dslit_df$state[
+  match(tree_plot$tip.label, dslit_df$Species)
+]
+idx <- suppressWarnings(as.integer(matched_states) + 1)
+
+dslit_tip_state_colors <- ifelse(
+  is.na(idx),
+  "grey80",
+  dslit_state_colors[idx]
+)
+
+# Pretty labels
+pretty_labels <- tip_map[tree_plot$tip.label]
+tree_plot$tip.label <- ifelse(
+  is.na(pretty_labels),
+  tree_plot$tip.label,
+  pretty_labels
+)
+
+# ────────────────────────────────────────────────
+# Plot
+# ────────────────────────────────────────────────
+png("ASR_E_enclosure_nonodes.png",
+    width  = PNG_W,
+    height = PNG_H,
+    res    = PNG_R,
+    bg     = "transparent")
+
+par(
+  mar = c(1, 1, 1, 1),
+  bg  = NA,
+  col = "white",
+  fg  = "white"
+)
+
+plotTree(
+  tree_plot,
+  type   = "phylogram",
+  ftype  = "i",
+  fsize  = TIP_FSIZE,
+  font   = TIP_FONT,
+  lwd    = TREE_LWD,
+  offset = TIP_OFFSET,
+  color  = "white"
+)
+
+# ────────────────────────────────────────────────
+# Tip symbols ONLY (no node circles anywhere)
+# ────────────────────────────────────────────────
+tiplabels(
+  pch = 21,
+  bg  = dslit_tip_state_colors,
+  col = "white",
+  lwd = 1.5,
+  cex = TIP_PCH_CEX
+)
+
+# ────────────────────────────────────────────────
+# Legend
+# ────────────────────────────────────────────────
+legend(
+  "bottomleft",
+  title = "Silk structure",
+  legend    = c("None", "Tube", "Domicile"),
+  pt.bg     = dslit_state_colors,
+  pch       = 22,
+  pt.cex    = LEG_PT_CEX,
+  cex       = LEG_TEXT_CEX,
+  bty       = "n",
+  y.intersp = LEG_Y_INTERSP,
+  text.col  = "white",
+  title.col = "white"
+)
+
+dev.off()
+
+```
+
+# Full transcriptome tree for context
+```{r}
+#use to see nodes
+#plot(full_tree, cex = 0.6)
+#nodelabels(cex = 0.4, frame = "n")
+
+suppressPackageStartupMessages({
+  library(ape)
+  library(phytools)
+})
+
+TREE_LWD   <- 5
+TIP_FSIZE  <- 1.5
+TIP_FONT   <- 3
+TIP_OFFSET <- 0.02
+
+PNG_W <- 4200
+PNG_H <- 8000
+PNG_R <- 400
+
+# ────────────────────────────────────────────────
+# Load tree
+# ────────────────────────────────────────────────
+full_tree <- read.tree("final_corophioid_tree.contree")
+
+# Root on Tig_cal + Sca_ste
+root_tips <- c("Tig_cal", "Sca_ste")
+root_node <- getMRCA(full_tree, root_tips)
+
+full_tree <- root(
+  full_tree,
+  node = root_node,
+  resolve.root = TRUE
+)
+
+# ────────────────────────────────────────────────
+# Flip target clades
+# ────────────────────────────────────────────────
+
+clade_A <- c(
+  "Cya_boo","Cya_err",
+  "Cap_irr","Cap_lae","Met_ano","Deu_cal","Tri_lae"
+)
+
+clade_B <- c(
+  "Pod_cr1","Pod_cr2","Pod_sep","Pod_spp",
+  "Isc_an1","Isc_an2","Jas_car","Jas_mar","Mic_lit","Cer_sp1"
+)
+
+A <- clade_A[clade_A %in% full_tree$tip.label]
+B <- clade_B[clade_B %in% full_tree$tip.label]
+
+cat("Clade A tips:", paste(A, collapse=", "), "\n")
+cat("Clade B tips:", paste(B, collapse=", "), "\n")
+
+# ────────────────────────────────────────────────
+# Orientation + flips
+# ────────────────────────────────────────────────
+full_tree <- ladderize(full_tree, right = TRUE)
+
+full_tree <- phytools::rotateNodes(full_tree, 112)
+full_tree <- phytools::rotateNodes(full_tree, 104)
+full_tree <- phytools::rotateNodes(full_tree, 93)
+
+cat("✅ Nodes 104 and 93 flipped\n")
+
+# ────────────────────────────────────────────────
+# Pretty labels
+# ────────────────────────────────────────────────
+pretty_labels <- tip_map[full_tree$tip.label]
+full_tree$tip.label <- ifelse(
+  is.na(pretty_labels),
+  full_tree$tip.label,
+  pretty_labels
+)
+
+# ────────────────────────────────────────────────
+# Plot
+# ────────────────────────────────────────────────
+png("full_tree_rooted_TigSca.png",
+    width  = PNG_W,
+    height = PNG_H,
+    res    = PNG_R,
+    bg     = "transparent")
+
+par(
+  mar = c(1,1,1,1),
+  bg  = NA,
+  col = "white",
+  fg  = "white",
+  lend = 2,
+  ljoin = 2
+)
+
+plot.phylo(
+  full_tree,
+  type            = "phylogram",
+  direction       = "rightwards",
+  use.edge.length = TRUE,
+  show.tip.label  = TRUE,
+  cex             = TIP_FSIZE,
+  font            = TIP_FONT,
+  label.offset    = TIP_OFFSET,
+  edge.width      = TREE_LWD,
+  edge.color      = "white",
+  tip.color       = "white",
+  align.tip.label = TRUE,
+  no.margin       = TRUE,
+  x.lim = c(0, max(nodeHeights(full_tree)) * 1.6)
+)
+
+# ────────────────────────────────────────────────
+# Node support (styled to match ASR figures)
+# ────────────────────────────────────────────────
+
+bs <- full_tree$node.label
+bs <- as.numeric(gsub("^([0-9\\.]+).*", "\\1", bs))
+
+if (max(bs, na.rm = TRUE) <= 1) {
+  bs <- bs * 100
+}
+
+coords <- get("last_plot.phylo", envir = .PlotPhyloEnv)
+
+Ntip <- length(full_tree$tip.label)
+internal_nodes <- (Ntip + 1):(Ntip + full_tree$Nnode)
+
+for (i in seq_along(internal_nodes)) {
+
+  node <- internal_nodes[i]
+  support <- bs[i]
+
+  if (!is.na(support)) {
+
+    bg <- if (support > 95) {
+      "white"
+    } else if (support > 75) {
+      "grey70"
+    } else {
+      "grey40"
+    }
+
+    points(
+      coords$xx[node],
+      coords$yy[node],
+      pch = 21,
+      bg  = bg,
+      col = "white",   # 🔑 white outline (matches other figures)
+      lwd = 1.2,       # 🔑 thinner outline (avoids inner-circle effect)
+      cex = 1.4        # 🔑 balanced size vs thick branches
+    )
+  }
+}
+
+dev.off()
+```
+

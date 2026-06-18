@@ -1,6 +1,6 @@
-# Corophiid Amphipod Phylogenomics
+# Corophiidan Amphipod Phylogenomics
 
-## PLANNED ANALYSIS FOR GENERATING COROPHIID AMPHIPOD PHYLOGENY FROM TRANSCRIPTOMES AND TARGETED DNA SEQUENCES
+## PLANNED ANALYSIS FOR GENERATING COROPHIIDAN AMPHIPOD PHYLOGENY FROM TRANSCRIPTOMES AND TARGETED DNA SEQUENCES
 
 ---
 
@@ -20,15 +20,15 @@ Date: 01 February 2023
 
 ### 1.1 Background Information
 
-Corophiids *sensu lato* (Amphipoda: Corophiida) are distinctive components of marine epifaunal and biofouling communities with highly varied body forms and an unclear evolutionary history. Morphology suggests that silk glands ignited a cascade of key innovations that first led to tube-dwelling, then to diverse free-living lifestyles (Myers & Lowry, 2003). A phylogenetic framework is needed to test hypotheses regarding how corophiids transitioned to multiple body types, but previous evolutionary studies suffer from scant fossil records, homoplasious traits, and a historical reliance on morpho-taxonomy or insufficient gene markers. This project will use phylogenomic methods to generate a molecular phylogeny of corophiid amphipods and investigate the diversification of their morphological innovations. Specifically, RNA-seq and DNA target enrichment will be used to sequence numerous gene characters from multiple genera of corophiid families. Here, we present the pipeline of our phylogenomic analysis of corophiids using 22 unpublished and 1 published corophiid transcriptome, 25 published and 2 unpublished crustacean transcriptomes, and 1 published and 1 unpublished crustacean genome that will serve as outgroups.
+Corophiidans *sensu lato* (Amphipoda: Corophiidana) are distinctive components of marine epifaunal and biofouling communities with highly varied body forms and an unclear evolutionary history. Morphology suggests that silk glands ignited a cascade of key innovations that first led to tube-dwelling, then to diverse free-living lifestyles (Myers & Lowry, 2003). A phylogenetic framework is needed to test hypotheses regarding how corophiidans transitioned to multiple body types, but previous evolutionary studies suffer from scant fossil records, homoplasious traits, and a historical reliance on morpho-taxonomy or insufficient gene markers. This project will use phylogenomic methods to generate a molecular phylogeny of corophiidan amphipods and investigate the diversification of their morphological innovations. Specifically, RNA-seq and DNA target enrichment will be used to sequence numerous gene characters from multiple genera of corophiidan families. Here, we present the pipeline of our phylogenomic analysis of corophiidans using 22 unpublished and 1 published corophiidan transcriptome, 25 published and 2 unpublished crustacean transcriptomes, and 1 published and 1 unpublished crustacean genome that will serve as outgroups.
 
 ### 1.2 Rationale
 
-Despite hypotheses about key innovations, there is no robust phylogenetic framework to reconstruct the history of trait acquisition across the corophiid clade. Identifying the traits that preceded diversification events are key to understanding how corophiids radiated into numerous morphologies and lifestyles. However, previous phylogenetic analyses have failed to resolve the evolutionary relationships between corophiidean amphipods. Even though amphipod characters are highly homoplastic (Berge et al., 2000; Hurt et al., 2013), most comprehensive phylogenetic studies of amphipods use morphological traits to reconstruct evolutionary relationships (Kim & Kim, 1993; Berge et al., 2000; Myers & Lowry, 2003; Lowry & Myers, 2013, 2017). Moreover, phylogenetic analyses that have considered genetic differentiation in corophiideans are insufficient to resolve evolutionary relationships between major groups. This study uses phylogenomic analysis of next-generation sequencing (NGS) data to obtain numerous gene characters and more robust reconstruction of evolutionary relationships between organisms (Wen et al., 2015).
+Despite hypotheses about key innovations, there is no robust phylogenetic framework to reconstruct the history of trait acquisition across the corophiidan clade. Identifying the traits that preceded diversification events are key to understanding how corophiidans radiated into numerous morphologies and lifestyles. However, previous phylogenetic analyses have failed to resolve the evolutionary relationships between corophiidan amphipods. Even though amphipod characters are highly homoplastic (Berge et al., 2000; Hurt et al., 2013), most comprehensive phylogenetic studies of amphipods use morphological traits to reconstruct evolutionary relationships (Kim & Kim, 1993; Berge et al., 2000; Myers & Lowry, 2003; Lowry & Myers, 2013, 2017). Moreover, phylogenetic analyses that have considered genetic differentiation in corophiidans are insufficient to resolve evolutionary relationships between major groups. This study uses phylogenomic analysis of next-generation sequencing (NGS) data to obtain numerous gene characters and more robust reconstruction of evolutionary relationships between organisms (Wen et al., 2015).
 
 ### 1.3 Objectives
 
-The objective of this study is to generate a robust phylogeny of corophiid amphipods using phylogenomic methods and reconstruct the evolutionary history of key morphological characters and modes of life among corophiid families. The resulting tree will be used to assess sequence and frequency of major morphological and ecological transitions in this diverse group.
+The objective of this study is to generate a robust phylogeny of corophiidan amphipods using phylogenomic methods and reconstruct the evolutionary history of key morphological characters and modes of life among corophiidan families. The resulting tree will be used to assess sequence and frequency of major morphological and ecological transitions in this diverse group.
 
 ---
 
@@ -36,11 +36,11 @@ The objective of this study is to generate a robust phylogeny of corophiid amphi
 
 ### 2.1 Acquiring transcriptomes
 
-For this study we will use novel transcriptomes and publicly available corophiid transcriptomes.
+For this study we will use novel transcriptomes and publicly available corophiidan transcriptomes.
 
-#### 2.1.1 *corophiid Transcriptomes*
+#### 2.1.1 *corophiidan Transcriptomes*
 
-We will acquire corophiid transcriptomes from our own sequencing efforts and publicly available data.
+We will acquire corophiidan transcriptomes from our own sequencing efforts and publicly available data.
 
 ##### *Sequenced Transcriptomes*
 
@@ -67,7 +67,7 @@ For transcriptomes from external hard drives, manually upload using Cyberduck.
 
 ##### *Public Transcriptomes*
 
-Download publicly available corophiid transcriptomes from the SRA database.
+Download publicly available corophiidan transcriptomes from the SRA database.
 
 Search for SRR sequences on the SRA database (<https://www.ncbi.nlm.nih.gov/sra>) using the search parameters below.
 
@@ -102,7 +102,7 @@ pigz -9 SRR7056353_pass_2.fastq &
 
 ##### *Public Genomes*
 
-Download publicly available corophiid and outgroup genome data from the NCBI Genome database, and upload to server manually using Cyberduck.
+Download publicly available corophiidan and outgroup genome data from the NCBI Genome database, and upload to server manually using Cyberduck.
 
 We will download the translated protein sequences to save space and time. Since these sequences do not need to be assembled by Trinity, they will be added to the assembled transcriptomes from Section 2.3 and on. We will also download curated sequence data from Refseq, rather than non-curated data from Genbank, since the data will be less redundant.
 
@@ -113,7 +113,7 @@ To download genomes: Go to the <a href = https://www.ncbi.nlm.nih.gov/genbank/>N
 
 We will acquire most outgroup transcriptomes from publicly available data in the SRA database (<https://www.ncbi.nlm.nih.gov/sra>) and some from collaborating sequencing efforts (K. Kocot, unpublished data).
 
-We will use representatives from non-corophiid amphipod families and orders of other peracarid and crustacean arthropods for outgroups. Outgroup selection will be based on transcriptome availability from recent phylogenetic studies of Amphipoda and Arthropoda (2018 - present). Transcriptome choice will be based on (1) phylogenetic position to achieve wide breadth of phylogenetic diversity, (2) completeness of transcriptome (i.e., BUSCO score), and (3) matrix occupancy (i.e., percentage of orthologous genes/characters of the outgroup taxon shared with all other taxa in the analysis).
+We will use representatives from non-corophiidan amphipod families and orders of other peracarid and crustacean arthropods for outgroups. Outgroup selection will be based on transcriptome availability from recent phylogenetic studies of Amphipoda and Arthropoda (2018 - present). Transcriptome choice will be based on (1) phylogenetic position to achieve wide breadth of phylogenetic diversity, (2) completeness of transcriptome (i.e., BUSCO score), and (3) matrix occupancy (i.e., percentage of orthologous genes/characters of the outgroup taxon shared with all other taxa in the analysis).
 
 ---
 
@@ -126,22 +126,22 @@ First, we will use FASTQC to get an idea of our data quality before trimming and
 ```bash
 # on mildred
 #symlink to raw sequences for input to FastQC
-mkdir -p /bwdata3/bcummings/corophiid/00-DATA/00-FASTQC_BEFORETRIMMING
+mkdir -p /bwdata3/bcummings/COROPHIID/00-DATA/00-FASTQC_BEFORETRIMMING
 
-find /bwdata3/bcummings/corophiid/00-DATA/Brittany \
+find /bwdata3/bcummings/COROPHIID/00-DATA/Brittany \
   -type f -name "*.fastq.gz" \
-  -exec ln -s {} /bwdata3/bcummings/corophiid/00-DATA/00-FASTQC_BEFORETRIMMING/ \;
+  -exec ln -s {} /bwdata3/bcummings/COROPHIID/00-DATA/00-FASTQC_BEFORETRIMMING/ \;
 
-find /bwdata3/bcummings/corophiid/00-DATA/Siena \
+find /bwdata3/bcummings/COROPHIID/00-DATA/Siena \
   -type f -name "*.fastq.gz" \
-  -exec ln -s {} /bwdata3/bcummings/corophiid/00-DATA/00-FASTQC_BEFORETRIMMING/ \;
+  -exec ln -s {} /bwdata3/bcummings/COROPHIID/00-DATA/00-FASTQC_BEFORETRIMMING/ \;
 
-find /bwdata3/bcummings/corophiid/00-DATA/NCBI \
+find /bwdata3/bcummings/COROPHIID/00-DATA/NCBI \
   -type f -name "*.fastq.gz" \
-  -exec ln -s {} /bwdata3/bcummings/corophiid/00-DATA/00-FASTQC_BEFORETRIMMING/ \;
+  -exec ln -s {} /bwdata3/bcummings/COROPHIID/00-DATA/00-FASTQC_BEFORETRIMMING/ \;
 
 
-cd /bwdata3/bcummings/corophiid/00-DATA/00-FASTQC_BEFORETRIMMING
+cd /bwdata3/bcummings/COROPHIID/00-DATA/00-FASTQC_BEFORETRIMMING
 
 fastqc *.fastq.gz
 
@@ -158,9 +158,9 @@ logout
 
 wsl
 
-scp bcummings@10.251.34.217:/bwdata3/bcummings/corophiid/00-DATA/00-FASTQC_BEFORETRIMMING/*.zip /mnt/e/DISSERTATION_DATA/chapter2_data_analysis/Data_NextGenSeq/Transcriptomes/FastQC/01-FASTQC_BEFORETRIMMING/
+scp bcummings@10.251.34.217:/bwdata3/bcummings/COROPHIID/00-DATA/00-FASTQC_BEFORETRIMMING/*.zip /mnt/e/DISSERTATION_DATA/chapter2_data_analysis/Data_NextGenSeq/Transcriptomes/FastQC/01-FASTQC_BEFORETRIMMING/
 
-scp bcummings@10.251.34.217:/bwdata3/bcummings/corophiid/00-DATA/00-FASTQC_BEFORETRIMMING/*.html /mnt/e/DISSERTATION_DATA/chapter2_data_analysis/Data_NextGenSeq/Transcriptomes/FastQC/01-FASTQC_BEFORETRIMMING/
+scp bcummings@10.251.34.217:/bwdata3/bcummings/COROPHIID/00-DATA/00-FASTQC_BEFORETRIMMING/*.html /mnt/e/DISSERTATION_DATA/chapter2_data_analysis/Data_NextGenSeq/Transcriptomes/FastQC/01-FASTQC_BEFORETRIMMING/
 ```
 
 #### 2.2.1 *Trimming and re-assembly*
@@ -177,8 +177,8 @@ First, make a shell script ```00-script_trim.sh``` with each file that you want 
 java -jar /usr/local/Trimmomatic-0.39/trimmomatic-0.39.jar PE \
   -threads 50 \
   -phred33 \
-  /bwdata3/bcummings/corophiid/00-DATA/Brittany/Aoroides_spp-BPER0026/Aoroides_spp_1.fastq.gz \
-  /bwdata3/bcummings/corophiid/00-DATA/Brittany/Aoroides_spp-BPER0026/Aoroides_spp_2.fastq.gz \
+  /bwdata3/bcummings/COROPHIID/00-DATA/Brittany/Aoroides_spp-BPER0026/Aoroides_spp_1.fastq.gz \
+  /bwdata3/bcummings/COROPHIID/00-DATA/Brittany/Aoroides_spp-BPER0026/Aoroides_spp_2.fastq.gz \
   Aoroides_spp-READ1.fastq.gz \
   Aoroides_spp.unp1.fq \
   Aoroides_spp-READ2.fastq.gz \
@@ -193,8 +193,8 @@ java -jar /usr/local/Trimmomatic-0.39/trimmomatic-0.39.jar PE \
 java -jar /usr/local/Trimmomatic-0.39/trimmomatic-0.39.jar PE \
   -threads 50 \
   -phred33 \
-  /bwdata3/bcummings/corophiid/00-DATA/Brittany/Caprella_irregularis-BCPD0040/Caprella_irregularis_1.fastq.gz \
-  /bwdata3/bcummings/corophiid/00-DATA/Brittany/Caprella_irregularis-BCPD0040/Caprella_irregularis_2.fastq.gz \
+  /bwdata3/bcummings/COROPHIID/00-DATA/Brittany/Caprella_irregularis-BCPD0040/Caprella_irregularis_1.fastq.gz \
+  /bwdata3/bcummings/COROPHIID/00-DATA/Brittany/Caprella_irregularis-BCPD0040/Caprella_irregularis_2.fastq.gz \
   Caprella_irregularis-READ1.fastq.gz \
   Caprella_irregularis.unp1.fq \
   Caprella_irregularis-READ2.fastq.gz \
@@ -209,8 +209,8 @@ java -jar /usr/local/Trimmomatic-0.39/trimmomatic-0.39.jar PE \
 java -jar /usr/local/Trimmomatic-0.39/trimmomatic-0.39.jar PE \
   -threads 50 \
   -phred33 \
-  /bwdata3/bcummings/corophiid/00-DATA/Brittany/Caprella_laeviscula-BCPD0048/Caprella_laeviscula_1.fastq.gz \
-  /bwdata3/bcummings/corophiid/00-DATA/Brittany/Caprella_laeviscula-BCPD0048/Caprella_laeviscula_2.fastq.gz \
+  /bwdata3/bcummings/COROPHIID/00-DATA/Brittany/Caprella_laeviscula-BCPD0048/Caprella_laeviscula_1.fastq.gz \
+  /bwdata3/bcummings/COROPHIID/00-DATA/Brittany/Caprella_laeviscula-BCPD0048/Caprella_laeviscula_2.fastq.gz \
   Caprella_laeviscula-READ1.fastq.gz \
   Caprella_laeviscula.unp1.fq \
   Caprella_laeviscula-READ2.fastq.gz \
@@ -228,9 +228,9 @@ Then run the script.
 
 ```bash
 
-mkdir -p /bwdata3/bcummings/corophiid/00-TRIMMING
+mkdir -p /bwdata3/bcummings/COROPHIID/00-TRIMMING
 
-cd /bwdata3/bcummings/corophiid/00-TRIMMING
+cd /bwdata3/bcummings/COROPHIID/00-TRIMMING
 
 chmod +x 00-script_trim.sh
 
@@ -245,19 +245,19 @@ Use FastQC to check and make sure adapters have been removed.
 
 ```bash
 # on mildred
-cd /bwdata3/bcummings/corophiid/00-TRIMMING
+cd /bwdata3/bcummings/COROPHIID/00-TRIMMING
 
-fastqc /bwdata3/bcummings/corophiid/00-TRIMMING/*fastq.gz
+fastqc /bwdata3/bcummings/COROPHIID/00-TRIMMING/*fastq.gz
 
 
 #move fastqc output files to a new folder
-mkdir -p /bwdata3/bcummings/corophiid/00-TRIMMING/00-FASTQC_AFTERTRIMMING
+mkdir -p /bwdata3/bcummings/COROPHIID/00-TRIMMING/00-FASTQC_AFTERTRIMMING
 
-cd /bwdata3/bcummings/corophiid/00-TRIMMING/00-FASTQC_AFTERTRIMMING
+cd /bwdata3/bcummings/COROPHIID/00-TRIMMING/00-FASTQC_AFTERTRIMMING
 
-mv /bwdata3/bcummings/corophiid/00-TRIMMING/*.zip .
+mv /bwdata3/bcummings/COROPHIID/00-TRIMMING/*.zip .
 
-mv /bwdata3/bcummings/corophiid/00-TRIMMING/*.html .
+mv /bwdata3/bcummings/COROPHIID/00-TRIMMING/*.html .
 
 
 
@@ -270,9 +270,9 @@ logout
 
 wsl
 
-scp bcummings@10.251.34.217:/bwdata3/bcummings/corophiid/00-TRIMMING/00-FASTQC_AFTERTRIMMING/*.zip /mnt/e/DISSERTATION_DATA/chapter2_data_analysis/Data_NextGenSeq/Transcriptomes/FastQC/02-FASTQC_AFTERTRIMMING/
+scp bcummings@10.251.34.217:/bwdata3/bcummings/COROPHIID/00-TRIMMING/00-FASTQC_AFTERTRIMMING/*.zip /mnt/e/DISSERTATION_DATA/chapter2_data_analysis/Data_NextGenSeq/Transcriptomes/FastQC/02-FASTQC_AFTERTRIMMING/
 
-scp bcummings@10.251.34.217:/bwdata3/bcummings/corophiid/00-TRIMMING/00-FASTQC_AFTERTRIMMING/*.html /mnt/e/DISSERTATION_DATA/chapter2_data_analysis/Data_NextGenSeq/Transcriptomes/FastQC/02-FASTQC_AFTERTRIMMING/
+scp bcummings@10.251.34.217:/bwdata3/bcummings/COROPHIID/00-TRIMMING/00-FASTQC_AFTERTRIMMING/*.html /mnt/e/DISSERTATION_DATA/chapter2_data_analysis/Data_NextGenSeq/Transcriptomes/FastQC/02-FASTQC_AFTERTRIMMING/
 
 ```
 
@@ -281,7 +281,7 @@ scp bcummings@10.251.34.217:/bwdata3/bcummings/corophiid/00-TRIMMING/00-FASTQC_A
 Now we can run Trinity to assemble our freshly trimmed data.
 
 ```bash
-/usr/local/trinityrnaseq-v2.15.0/Trinity --seqType fq --max_memory 200G --CPU 45  --left /bwdata3/bcummings/corophiid/00-TRIMMING/Byblis_spp-READ1.fastq.gz --right /bwdata3/bcummings/corophiid/00-TRIMMING/Byblis_spp-READ2.fastq.gz --full_cleanup > trin.out 2> trin.err &
+/usr/local/trinityrnaseq-v2.15.0/Trinity --seqType fq --max_memory 200G --CPU 45  --left /bwdata3/bcummings/COROPHIID/00-TRIMMING/Byblis_spp-READ1.fastq.gz --right /bwdata3/bcummings/COROPHIID/00-TRIMMING/Byblis_spp-READ2.fastq.gz --full_cleanup > trin.out 2> trin.err &
 
 # etc.
 ```
@@ -289,7 +289,7 @@ Now we can run Trinity to assemble our freshly trimmed data.
 If you skipped Trimmomatic above and need to run trimming within Trinity, instead run the following
 
 ```bash
-/usr/local/trinityrnaseq-v2.15.0/Trinity --seqType fq --max_memory 200G --CPU 45 --trimmomatic --quality_trimming_params "ILLUMINACLIP:NexteraPE-PE.fa:2:30:10 SLIDINGWINDOW:4:5 LEADING:5 TRAILING:5 MINLEN:25" --left /bwdata3/bcummings/corophiid/00-DATA/Brittany/Aoroides_spp-BPER0026/Aoroides_spp_1.fastq.gz --right /bwdata3/bcummings/corophiid/00-DATA/Brittany/Aoroides_spp-BPER0026/Aoroides_spp_2.fastq.gz --full_cleanup > trin.out 2> trin.err &
+/usr/local/trinityrnaseq-v2.15.0/Trinity --seqType fq --max_memory 200G --CPU 45 --trimmomatic --quality_trimming_params "ILLUMINACLIP:NexteraPE-PE.fa:2:30:10 SLIDINGWINDOW:4:5 LEADING:5 TRAILING:5 MINLEN:25" --left /bwdata3/bcummings/COROPHIID/00-DATA/Brittany/Aoroides_spp-BPER0026/Aoroides_spp_1.fastq.gz --right /bwdata3/bcummings/COROPHIID/00-DATA/Brittany/Aoroides_spp-BPER0026/Aoroides_spp_2.fastq.gz --full_cleanup > trin.out 2> trin.err &
 
 # etc.
 ```
@@ -314,7 +314,7 @@ Or if running on commandline:
 ```bash
 micromamba activate /bwdata3/bcummings/00-MICROMAMBA/busco
 
-cd /bwdata3/bcummings/corophiid/01-TRINITY/Kevin/Byblis_spp
+cd /bwdata3/bcummings/COROPHIID/01-TRINITY/Kevin/Byblis_spp
 
 busco -i Byblis_spp.Trinity.fasta -o Byblis_spp_EUK -l eukaryota_odb10 -m transcriptome -c 8
 ```
@@ -552,18 +552,18 @@ Or if running on commandline:
 ```bash
 micromamba activate /bwdata3/bcummings/00-MICROMAMBA/busco
 
-cd /bwdata3/bcummings/corophiid/03-ALIEN_INDEX/Byb_spp
+cd /bwdata3/bcummings/COROPHIID/03-ALIEN_INDEX/Byb_spp
 
-busco -i /bwdata3/bcummings/corophiid/03-ALIEN_INDEX/orthofinder_input/Byb_spp_no_aliens.faa -o Byb_spp_EUK -l eukaryota_odb10 -m protein -c 8
+busco -i /bwdata3/bcummings/COROPHIID/03-ALIEN_INDEX/orthofinder_input/Byb_spp_no_aliens.faa -o Byb_spp_EUK -l eukaryota_odb10 -m protein -c 8
 ```
 
-Given the limited number of published amphipod genomes, transcriptomes with a BUSCO score below 25\% were excluded to retain as many corophiid ingroups as possible.
+Given the limited number of published amphipod genomes, transcriptomes with a BUSCO score below 25\% were excluded to retain as many corophiidan ingroups as possible.
 
 ---
 
 ### 2.7 Identify orthogroups using OrthoFinder
 
-We will identify orthogroups across corophiid transcriptomes with OrthoFinder v2.1.2 (Emms & Kelly 2015).
+We will identify orthogroups across corophiidan transcriptomes with OrthoFinder v2.1.2 (Emms & Kelly 2015).
 
 #### 2.7.1 *Link OrthoFinder output folder to input files*
 
@@ -725,25 +725,25 @@ Use ```remove_pipe_text.pl``` script to rename file deflines and remove text aft
 ##### *Nucleotide data*
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/input_IQTREE
+mkdir -p /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/input_IQTREE
 ```
 
 ```bash
-cd /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/input_IQTREE
+cd /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/input_IQTREE
 
-perl /bwdata3/bcummings/SCRIPTS/remove_pipe_text.pl "/bwdata3/bcummings/corophiid/06-PAL2NAL/mintaxa75%/03-P2N/*.fa"
+perl /bwdata3/bcummings/SCRIPTS/remove_pipe_text.pl "/bwdata3/bcummings/COROPHIID/06-PAL2NAL/mintaxa75%/03-P2N/*.fa"
 ```
 
 ##### *Amino acid data*
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/input_IQTREE
+mkdir -p /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/input_IQTREE
 ```
 
 ```bash
-cd /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/input_IQTREE
+cd /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/input_IQTREE
 
-perl /bwdata3/bcummings/SCRIPTS/remove_pipe_text.pl "/bwdata3/bcummings/corophiid/06-PAL2NAL/mintaxa75%/01-SEQS/*.fa"
+perl /bwdata3/bcummings/SCRIPTS/remove_pipe_text.pl "/bwdata3/bcummings/COROPHIID/06-PAL2NAL/mintaxa75%/01-SEQS/*.fa"
 ```
 
 NOTE:
@@ -754,7 +754,7 @@ First, explode orthogroups by taxon. We will do this for both pre and post Phylo
 ```bash
 micromamba activate /bwdata3/auehling/00-MICROMAMBA/phyluce-1.7.3
 
-cd /bwdata3/bcummings/corophiid/07-SPECIESTREE/NUC_bestgenetreemodels
+cd /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/NUC_bestgenetreemodels
 
 phyluce_align_explode_alignments \
   --alignments input_IQTREE/ \
@@ -762,7 +762,7 @@ phyluce_align_explode_alignments \
   --by-taxon
 
 
-cd /bwdata3/bcummings/corophiid/05-PHYLOPYPRUNER/mintaxa75%
+cd /bwdata3/bcummings/COROPHIID/05-PHYLOPYPRUNER/mintaxa75%
 
 mkdir input_clean_for_summary
 
@@ -781,14 +781,14 @@ phyluce_align_explode_alignments \
 Then get per-taxon sequence length stats.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/07-SPECIESTREE/NUC_bestgenetreemodels
+cd /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/NUC_bestgenetreemodels
 
 for i in individual_fastas_by_taxon/*.fasta; do
     phyluce_assembly_get_fasta_lengths --input "$i" --csv
 done > fasta_lengths_orthogroups_min75%.csv &50%
 
 
-cd /bwdata3/bcummings/corophiid/05-PHYLOPYPRUNER/mintaxa75%
+cd /bwdata3/bcummings/COROPHIID/05-PHYLOPYPRUNER/mintaxa75%
 
 for i in individual_fastas_by_taxon/*.fasta; do
     phyluce_assembly_get_fasta_lengths --input "$i" --csv
@@ -820,15 +820,15 @@ For nucleotide and amino acid data, use slightly modified version of the ```fast
 ##### *Nucleotide data*
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/output_IQTREE
+mkdir -p /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/output_IQTREE
 ```
 
 ```bash
-perl /bwdata3/bcummings/SCRIPTS/fasta2phylomatrix_edit.pl --dir=/bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/input_IQTREE --partition=partitions_NUC_min75.txt > concatenated_NUC_min75.fa
+perl /bwdata3/bcummings/SCRIPTS/fasta2phylomatrix_edit.pl --dir=/bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/input_IQTREE --partition=partitions_NUC_min75.txt > concatenated_NUC_min75.fa
 ```
 
 ```bash
-cd /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/output_IQTREE
+cd /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/output_IQTREE
 perl /bwdata3/bcummings/SCRIPTS/partition_to_nexus.pl --input=partitions_NUC_min75.txt --output=partitions_NUC_min75.nex
 
 ```
@@ -836,17 +836,17 @@ perl /bwdata3/bcummings/SCRIPTS/partition_to_nexus.pl --input=partitions_NUC_min
 ##### *Amino acid data*
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/output_IQTREE
+mkdir -p /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/output_IQTREE
 ```
 
 ```bash
-cd /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/output_IQTREE
+cd /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/output_IQTREE
 
-perl /bwdata3/bcummings/SCRIPTS/fasta2phylomatrix_edit.pl --dir=/bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/input_IQTREE --partition=partitions_AA_min75.txt > concatenated_AA_min75.fa
+perl /bwdata3/bcummings/SCRIPTS/fasta2phylomatrix_edit.pl --dir=/bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/input_IQTREE --partition=partitions_AA_min75.txt > concatenated_AA_min75.fa
 ```
 
 ```bash
-cd /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/output_IQTREE
+cd /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/output_IQTREE
 perl /bwdata3/bcummings/SCRIPTS/partition_to_nexus.pl --input=partitions_AA_min75.txt --output=partitions_AA_min75.nex
 ```
 
@@ -859,7 +859,7 @@ For nucleotide data, run IQ-TREE with respective concatenated data and partition
 First, use the custom script ```retrieve_models.pl``` add the "best models" from Section 2.10.2 to the partition file.
 
 ```bash
-perl /bwdata3/bcummings/SCRIPTS/retrieve_models.pl --input /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/output_IQTREE/partitions_NUC_min75.nex --output /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/output_IQTREE/partitions_NUC_bestgenetreemodels_min75.nex --logs /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/GENE_TREE/output_IQTREE
+perl /bwdata3/bcummings/SCRIPTS/retrieve_models.pl --input /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/output_IQTREE/partitions_NUC_min75.nex --output /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/output_IQTREE/partitions_NUC_bestgenetreemodels_min75.nex --logs /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/GENE_TREE/output_IQTREE
 
 ```
 
@@ -884,7 +884,7 @@ perl /bwdata3/bcummings/SCRIPTS/calculate_missing_data_per_taxon.pl \
 For amino acid data, run IQ-TREE with respective concatenated data and partition file using ```-m MFP+MERGE``` to select the best-fit partitioning scheme and generate trees from the best-fit substitution models for each partition, or using ```-m C60``` to generate trees from the C60 substitution model for each partition. Note that the first option is a very time-intensive run and can take over week.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/output_IQTREE
+cd /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/AA_bestgenetreemodels/output_IQTREE
 
 iqtree -s concatenated_AA_min75.fa -spp partitions_AA_min75.nex -m MFP+MERGE -st AA -bb 1000 -nt AUTO -pre AA_MFP_min75
 ```
@@ -1017,7 +1017,7 @@ perl [path_to_script]/copy_genesortR_files.pl [path_to_working_genesortR_folder]
 
 ### 3.2 Subset taxa in orthogroups (optional)
 
-To improve specificity in sequences uploaded to Arbor Biosciences for bait design, we will extract orthologs from a select few corophiid taxa in the nucleotide orthogroup datasets. These data subsets will be used for bait design and to generate species trees that can be compared with full datasets to assess phylogenetic performance (see Section 2.15). We will choose 3 taxa and span the breadth of predicted corophiid phylogenetic space.
+To improve specificity in sequences uploaded to Arbor Biosciences for bait design, we will extract orthologs from a select few corophiidan taxa in the nucleotide orthogroup datasets. These data subsets will be used for bait design and to generate species trees that can be compared with full datasets to assess phylogenetic performance (see Section 2.15). We will choose 3 taxa and span the breadth of predicted corophiidan phylogenetic space.
 
 #### 3.2.1 *Make list of taxa to exclude*
 
@@ -1243,19 +1243,19 @@ You can also run FastQC as an interactive graphical application on your local co
 
 ```bash
 # on mildred
-cd /bwdata3/bcummings/corophiid/00-DATA/TARGET_CAPTURE/
+cd /bwdata3/bcummings/COROPHIID/00-DATA/TARGET_CAPTURE/
 
-fastqc /bwdata3/bcummings/corophiid/00-DATA/TARGET_CAPTURE/*fastq.gz
+fastqc /bwdata3/bcummings/COROPHIID/00-DATA/TARGET_CAPTURE/*fastq.gz
 
 
 #move fastqc output files to a new folder
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/00-FASTQC_BEFORETRIMMING
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/00-FASTQC_BEFORETRIMMING
 
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/00-FASTQC_BEFORETRIMMING
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/00-FASTQC_BEFORETRIMMING
 
-mv /bwdata3/bcummings/corophiid/00-DATA/TARGET_CAPTURE/*.zip .
+mv /bwdata3/bcummings/COROPHIID/00-DATA/TARGET_CAPTURE/*.zip .
 
-mv /bwdata3/bcummings/corophiid/00-DATA/TARGET_CAPTURE/*.html .
+mv /bwdata3/bcummings/COROPHIID/00-DATA/TARGET_CAPTURE/*.html .
 
 ```
 
@@ -1264,9 +1264,9 @@ Download the .zip files and unzip to view the results. Open the html files and s
 ```bash
 logout
 
-scp bcummings@10.251.34.217:/bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/00-FASTQC_BEFORETRIMMING/*.zip "C:/Users/bmc82/Documents/UF/PhD_Projects/1-corophiid/Data/Data_NextGenSeq/TargetCapture/Arbor/Results/01-FASTQC_BEFORETRIMMING"
+scp bcummings@10.251.34.217:/bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/00-FASTQC_BEFORETRIMMING/*.zip "C:/Users/bmc82/Documents/UF/PhD_Projects/1-corophiidan/Data/Data_NextGenSeq/TargetCapture/Arbor/Results/01-FASTQC_BEFORETRIMMING"
 
-scp bcummings@10.251.34.217:/bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/00-FASTQC_BEFORETRIMMING/*.html "C:/Users/bmc82/Documents/UF/PhD_Projects/1-corophiid/Data/Data_NextGenSeq/TargetCapture/Arbor/Results/01-FASTQC_BEFORETRIMMING"
+scp bcummings@10.251.34.217:/bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/00-FASTQC_BEFORETRIMMING/*.html "C:/Users/bmc82/Documents/UF/PhD_Projects/1-corophiidan/Data/Data_NextGenSeq/TargetCapture/Arbor/Results/01-FASTQC_BEFORETRIMMING"
 ```
 
 #### 4.3.2 *Trimming Adapters*
@@ -1281,8 +1281,8 @@ First, make a shell script ```00-script_trim_targetcapture.sh``` with each file 
 java -jar /usr/local/Trimmomatic-0.39/trimmomatic-0.39.jar PE \
   -threads 50 \
   -phred33 \
-  /bwdata3/bcummings/corophiid/00-DATA/TARGET_CAPTURE/Ampithoe_lacertosa_L0003_R1.fastq.gz \
-  /bwdata3/bcummings/corophiid/00-DATA/TARGET_CAPTURE/Ampithoe_lacertosa_L0003_R2.fastq.gz \
+  /bwdata3/bcummings/COROPHIID/00-DATA/TARGET_CAPTURE/Ampithoe_lacertosa_L0003_R1.fastq.gz \
+  /bwdata3/bcummings/COROPHIID/00-DATA/TARGET_CAPTURE/Ampithoe_lacertosa_L0003_R2.fastq.gz \
   Ampithoe_lacertosa-READ1.fastq.gz \
   Ampithoe_lacertosa.unp1.fq \
   Ampithoe_lacertosa-READ2.fastq.gz \
@@ -1297,8 +1297,8 @@ java -jar /usr/local/Trimmomatic-0.39/trimmomatic-0.39.jar PE \
 java -jar /usr/local/Trimmomatic-0.39/trimmomatic-0.39.jar PE \
   -threads 50 \
   -phred33 \
-  /bwdata3/bcummings/corophiid/00-DATA/TARGET_CAPTURE/Aoroides_spp_L0001_R1.fastq.gz \
-  /bwdata3/bcummings/corophiid/00-DATA/TARGET_CAPTURE/Aoroides_spp_L0001_R2.fastq.gz \
+  /bwdata3/bcummings/COROPHIID/00-DATA/TARGET_CAPTURE/Aoroides_spp_L0001_R1.fastq.gz \
+  /bwdata3/bcummings/COROPHIID/00-DATA/TARGET_CAPTURE/Aoroides_spp_L0001_R2.fastq.gz \
   Aoroides_spp-READ1.fastq.gz \
   Aoroides_spp.unp1.fq \
   Aoroides_spp-READ2.fastq.gz \
@@ -1317,9 +1317,9 @@ Then run the script.
 
 ```bash
 
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC
 
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC
 
 chmod +x 00-script_trim_targetcapture.sh
 
@@ -1334,19 +1334,19 @@ Check quality of trimming by using FastQC.
 
 #use cleaned sequences as input for FastQC
 
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming
 
 find 01-TRIMMOMATIC -type f -name "*.fastq.gz" -exec fastqc {} \;
 
 
 #move fastqc output files to a new folder
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/02-FASTQC_AFTERTRIMMING
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/02-FASTQC_AFTERTRIMMING
 
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/02-FASTQC_AFTERTRIMMING
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/02-FASTQC_AFTERTRIMMING
 
-mv /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC/*.zip .
+mv /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC/*.zip .
 
-mv /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC/*.html .
+mv /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC/*.html .
 
 ```
 
@@ -1355,9 +1355,9 @@ Download the .zip files and unzip to view the results. Open the html files and s
 ```bash
 logout
 
-scp bcummings@10.251.34.217:/bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/02-FASTQC_AFTERTRIMMING/*.zip "C:/Users/bmc82/Documents/UF/PhD_Projects/1-corophiid/Data/Data_NextGenSeq/TargetCapture/Arbor/Results/02-FASTQC_AFTERTRIMMING"
+scp bcummings@10.251.34.217:/bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/02-FASTQC_AFTERTRIMMING/*.zip "C:/Users/bmc82/Documents/UF/PhD_Projects/1-corophiidan/Data/Data_NextGenSeq/TargetCapture/Arbor/Results/02-FASTQC_AFTERTRIMMING"
 
-scp bcummings@10.251.34.217:/bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/02-FASTQC_AFTERTRIMMING/*.html "C:/Users/bmc82/Documents/UF/PhD_Projects/1-corophiid/Data/Data_NextGenSeq/TargetCapture/Arbor/Results/02-FASTQC_AFTERTRIMMING"
+scp bcummings@10.251.34.217:/bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/02-FASTQC_AFTERTRIMMING/*.html "C:/Users/bmc82/Documents/UF/PhD_Projects/1-corophiidan/Data/Data_NextGenSeq/TargetCapture/Arbor/Results/02-FASTQC_AFTERTRIMMING"
 ```
 
 >**NOTE:** I had to re-trim Paragammaropsis_spp, Pseudampithoides_incurvaria, and Tropichelura_spp_2 with expanded TruSeq3-PE-2.fa adapters file since trimming with TruSeq-PE.fa did not get rid of all Illumina adapters.
@@ -1404,20 +1404,20 @@ Use `atram_preprocessor.py` to prep libraries for aTRAM. This will build BLAST d
 First, prepare the input files. We will use a custom script to change the headers to match the format expected by aTRAM. Note that this step might take up to 10 minutes per file.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC
 
 rm -r *-singles.fastq.gz
 
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_input
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_input
 
-bash /bwdata3/bcummings/SCRIPTS/atram_rename.sh /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_input
+bash /bwdata3/bcummings/SCRIPTS/atram_rename.sh /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_input
 
 ```
 
 Now run `atram_preprocessor.py` on the input files to make the aTRAM libraries.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/
 
 mkdir -p atram_db
 
@@ -1425,7 +1425,7 @@ micromamba activate /bwdata3/bcummings/00-MICROMAMBA/atram
 
 for a in "${array[@]}";
 do
-atram_preprocessor.py --cpus 80 --gzip -b /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_db/${a}/lib_${a} --end-1 /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_input/${a}-READ1.fastq.gz --end-2 /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_input/${a}-READ2.fastq.gz
+atram_preprocessor.py --cpus 80 --gzip -b /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_db/${a}/lib_${a} --end-1 /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_input/${a}-READ1.fastq.gz --end-2 /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_input/${a}-READ2.fastq.gz
 done
 
 ```
@@ -1433,7 +1433,7 @@ done
 To get a better idea of what is going on, you can explore the output database. Note that this is NOT necessary, but it's good practice for working with sqlite. For example:
 
 ```bash
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_db
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_db
 
 # Enter database:
 sqlite3 ${a}/lib_${a}.sqlite.db
@@ -1464,7 +1464,7 @@ First, make our aTRAM output folders.
 
 ```bash
 
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/
 
 mkdir -p atram_output
 
@@ -1482,23 +1482,23 @@ Use the custom Perl script `extract_refs_from_probes.pl` to prepare full-length 
 
 ```bash
 perl /bwdata3/bcummings/SCRIPTS/extract_refs_from_probes.pl \
-    /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/probes_renamed.fasta \
-    /bwdata3/bcummings/corophiid/06-PAL2NAL/mintaxa75%_ARBOR_BAITDESIGN/03-P2N/ \
-    /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta \
-    /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/matched_loci_info.tsv
+    /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/probes_renamed.fasta \
+    /bwdata3/bcummings/COROPHIID/06-PAL2NAL/mintaxa75%_ARBOR_BAITDESIGN/03-P2N/ \
+    /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta \
+    /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/matched_loci_info.tsv
 
 ```
 
 We will use the custom perl script `extract_matching_proteins.pl` with the TSV lookup table and our folder of amino acid sequences (from earlier when we used PAL2NAL to prep sequences for species tree construction) to extract the sequences and create an amino acid reference file. We won't use this until the stitching step after assembly.
 
 ```bash
-perl /bwdata3/bcummings/SCRIPTS/extract_matching_proteins.pl matched_loci_info.tsv /bwdata3/bcummings/corophiid/06-PAL2NAL/mintaxa75%_ARBOR/01-SEQS refseqs_AA.fasta
+perl /bwdata3/bcummings/SCRIPTS/extract_matching_proteins.pl matched_loci_info.tsv /bwdata3/bcummings/COROPHIID/06-PAL2NAL/mintaxa75%_ARBOR/01-SEQS refseqs_AA.fasta
 ```
 
 Now run aTRAM. Note that this will take ~1 day to complete for our 21 taxa.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM
 
 micromamba activate /bwdata3/bcummings/00-MICROMAMBA/atram
 
@@ -1508,7 +1508,7 @@ array=(Amphideutopus_oculatus Ampithoe_lacertosa Aoroides_spp Cerapus_spp Cheval
 
 for a in "${array[@]}"; # Iterate through samples
 do
-atram.py -b /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_db/${a}/lib_${a} -Q /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta -i 5 --cpus 80 -o /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/${a} --log-file /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/logs/${a}.Nucleotide.log -a spades
+atram.py -b /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_db/${a}/lib_${a} -Q /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta -i 5 --cpus 80 -o /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/${a} --log-file /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/logs/${a}.Nucleotide.log -a spades
 done
 
 
@@ -1523,7 +1523,7 @@ array=(Amphideutopus_oculatus Ampithoe_lacertosa Aoroides_spp Cerapus_spp Cheval
 
 for a in "${array[@]}"; # Iterate through samples
 do
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide
 mkdir filtered all
 mv *.filtered_contigs.fasta filtered/
 mv *.all_contigs.fasta all/
@@ -1548,9 +1548,9 @@ This pipeline uses a script `exon_stitching.sh` which requires multiple inputs:
 First, copy the amino acid file that we made earlier.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
 
-cp -r /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/refseqs_AA.fasta /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
+cp -r /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/refseqs_AA.fasta /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
 ```
 
 Next, we need to use `getlastiteration.pl` to keep only the contigs from the last aTRAM iteration.
@@ -1560,14 +1560,14 @@ array=(Amphideutopus_oculatus Ampithoe_lacertosa Aoroides_spp Cerapus_spp Cheval
 
 for a in "${array[@]}";
 do
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered
 perl /bwdata3/bcummings/SCRIPTS/getlastiteration.pl
-mkdir /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered/last
+mkdir /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered/last
 mv *.last.* last/
 cd ..
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/all
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/all
 perl /bwdata3/bcummings/SCRIPTS/getlastiteration.pl
-mkdir /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/all/last
+mkdir /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/all/last
 mv *.last.* last/
 done
 
@@ -1578,18 +1578,18 @@ For these outputs, we will need to combine matches for the same UCE (from differ
 First count and delete empty assembly files, if there are any.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
 
 array=(Amphideutopus_oculatus Ampithoe_lacertosa Aoroides_spp Cerapus_spp Chevaliidae_spp Cyamus_boopis Cyamus_erraticus Cyamus_scammoni Dyopedos_arcticus Ischyrocerus_anguipes Latigammaropsis_spp Microprotopus_raneyi Monocorophium_acherusicum Paragammaropsis_spp Plesiolembos_rectangulatus Podocerus_cristatus_1 Podocerus_cristatus_2 Protomedeia_prudens Pseudampithoides_incurvaria Tropichelura_spp_1 Tropichelura_spp_2)
 
 for a in "${array[@]}";
 do
-cp /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered/last/* /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
+cp /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered/last/* /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
 done
 
 #Change name so that UCE number is added after the taxon name. This let's us keep track of contigs after downstream processing.
 
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
 
 for f in *.fasta; do
   taxon=$(echo "$f" | cut -d'.' -f1)
@@ -1612,9 +1612,9 @@ find . -type f -ls | wc -l
 Now, make the taxon list. Each name should match the portion before .lib in your UCE assembly filenames. For example, if your file is named "Abyssorchomene_distinctus_uce001.lib_Abyssorchomene_distinctus_refseqs_NUC_uce_001_Cer_spp_OG0001610_1.filtered_contigs.last.fasta", then the taxon name would be Abyssorchomene_distinctus_uce001.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
 
-for f in /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies/*.lib_*.fasta; do basename "$f" | sed 's/_uce[0-9]\{3\}//' | sed 's/\.lib.*//' ; done | sort -u > tax_list.txt
+for f in /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies/*.lib_*.fasta; do basename "$f" | sed 's/_uce[0-9]\{3\}//' | sed 's/\.lib.*//' ; done | sort -u > tax_list.txt
 
 ```
 
@@ -1628,7 +1628,7 @@ For each taxon-UCE, the script outputs a stitched nucleotide FASTA file using th
 Make sure your stitching folder has a subfolder called "bin" containing the following scripts from Barrow et al 2019: editfasta.pl, getcontigs.pl, stitch.contigs.pl, summary_stats.pl. Also, make sure you have the exon_stitching.sh script in the exon_stitching2.0 folder.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
 
 bash exon_stitching.sh tax_list.txt refseqs_AA.fasta assemblies/ 10
 ```
@@ -1643,7 +1643,7 @@ To perform this filtering, we run the custom Perl script ```select_best_stitched
 
 ```bash
 
-perl /bwdata3/bcummings/SCRIPTS/select_best_stitched_exons.pl /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/ /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons/
+perl /bwdata3/bcummings/SCRIPTS/select_best_stitched_exons.pl /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/ /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons/
 
 ```
 
@@ -1654,13 +1654,13 @@ We will perform a recipricol BLAST check on the final stitched exons to identify
 ```bash
 #First combine all the sequences into one file
 
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM
-mkdir /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM
+mkdir /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit
 cd reciprocal_besthit/
 mkdir db
 cd db/
 
-for f in /bwdata3/bcummings/corophiid/06-PAL2NAL/mintaxa75%_ARBOR_BAITDESIGN/02-CDS/*.fa; do
+for f in /bwdata3/bcummings/COROPHIID/06-PAL2NAL/mintaxa75%_ARBOR_BAITDESIGN/02-CDS/*.fa; do
     og=$(basename "$f" .fa | sed 's/_pruned$//')
     awk -v og="$og" '/^>/{print $0"|"og; next} {print}' "$f"
 done > transcriptome_genes.fasta
@@ -1682,11 +1682,11 @@ for filename in *.csv; do echo "$filename"; cat "$filename"; done > blast_output
 Go through BLAST output and flag any locus-individual combos where top hit is not the desired locus. In our case, use the "orthogroup_map" tab in the "probes_working.xlsx" file to figure out which locus corresponds to which UCE number. Remove mismatches from stitched exons files before proceeding with downstream analyses.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
 
-cp -r /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons/*stitched_exons.fasta /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
+cp -r /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons/*stitched_exons.fasta /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
 
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
 
 
 patterns="uce_099_Ampithoe_lacertosa."
@@ -1715,11 +1715,11 @@ For genome assemblies provided as .cds files, which cannot be processed with aTR
 We already trimmed adapters from transcriptome data with Trimmomatic before the Trinity assembly above, so we will just use this data.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/01-Trimming
+mkdir -p /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/01-Trimming
 
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/01-Trimming
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/01-Trimming
 
-ln -s /bwdata3/bcummings/corophiid/00-TRIMMING/*.fastq.gz .
+ln -s /bwdata3/bcummings/COROPHIID/00-TRIMMING/*.fastq.gz .
 
 
 ```
@@ -1731,11 +1731,11 @@ Use `atram_preprocessor.py` to prep libraries for aTRAM. This will build BLAST d
 First, prepare the input files. We will copy the raw fastq.gz files and then change the headers to match the format expected by aTRAM. Note that this step might take at least 10 minutes per file.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_input
+mkdir -p /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_input
 
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/
 
-bash /bwdata3/bcummings/SCRIPTS/atram_rename.sh /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/01-Trimming/ /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_input
+bash /bwdata3/bcummings/SCRIPTS/atram_rename.sh /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/01-Trimming/ /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_input
 
 
 ```
@@ -1743,7 +1743,7 @@ bash /bwdata3/bcummings/SCRIPTS/atram_rename.sh /bwdata3/bcummings/corophiid/12-
 Now run `atram_preprocessor.py` on the input files to make the aTRAM libraries.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/
 
 mkdir -p atram_db
 
@@ -1753,7 +1753,7 @@ array=(Abyssorchomene_distinctus Alicella_gigantea Aoroides_spp Apseudomorpha_sp
 
 for a in "${array[@]}";
 do
-atram_preprocessor.py --cpus 80 --gzip -b /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_db/${a}/lib_${a} --end-1 /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_input/${a}-READ1.fastq.gz --end-2 /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_input/${a}-READ2.fastq.gz
+atram_preprocessor.py --cpus 80 --gzip -b /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_db/${a}/lib_${a} --end-1 /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_input/${a}-READ1.fastq.gz --end-2 /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_input/${a}-READ2.fastq.gz
 done
 
 ```
@@ -1766,7 +1766,7 @@ First, make our aTRAM output folders.
 
 ```bash
 
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/
 
 mkdir -p atram_output
 
@@ -1797,23 +1797,23 @@ Use the custom Perl script `extract_refs_from_probes.pl` to prepare full-length 
 
 ```bash
 perl /bwdata3/bcummings/SCRIPTS/extract_refs_from_probes.pl \
-    /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/probes_renamed.fasta \
-    /bwdata3/bcummings/corophiid/06-PAL2NAL/mintaxa75%_ARBOR_BAITDESIGN/03-P2N/ \
-    /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta \
-    /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/matched_loci_info.tsv
+    /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/probes_renamed.fasta \
+    /bwdata3/bcummings/COROPHIID/06-PAL2NAL/mintaxa75%_ARBOR_BAITDESIGN/03-P2N/ \
+    /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta \
+    /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/matched_loci_info.tsv
 
 ```
 
 We will use the custom perl script `extract_matching_proteins.pl` with the TSV lookup table and our folder of amino acid sequences (from earlier when we used PAL2NAL to prep sequences for species tree construction) to extract the sequences and create an amino acid reference file. We won't use this until the stitching step after assembly.
 
 ```bash
-perl /bwdata3/bcummings/SCRIPTS/extract_matching_proteins.pl matched_loci_info.tsv /bwdata3/bcummings/corophiid/06-PAL2NAL/mintaxa75%_ARBOR_BAITDESIGN/01-SEQS refseqs_AA.fasta
+perl /bwdata3/bcummings/SCRIPTS/extract_matching_proteins.pl matched_loci_info.tsv /bwdata3/bcummings/COROPHIID/06-PAL2NAL/mintaxa75%_ARBOR_BAITDESIGN/01-SEQS refseqs_AA.fasta
 ```
 
 Now run aTRAM. Note that this will probably take ~1 week to complete for our 51 taxa.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM
 
 micromamba activate /bwdata3/bcummings/00-MICROMAMBA/atram
 
@@ -1823,7 +1823,7 @@ array=(Abyssorchomene_distinctus Alicella_gigantea Aoroides_spp Apseudomorpha_sp
 
 for a in "${array[@]}"; # Iterate through samples
 do
-atram.py -b /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_db/${a}/lib_${a} -Q /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta -i 5 --cpus 80 -o /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/${a} --log-file /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/logs/${a}.Nucleotide.log -a spades
+atram.py -b /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_db/${a}/lib_${a} -Q /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta -i 5 --cpus 80 -o /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/${a} --log-file /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/logs/${a}.Nucleotide.log -a spades
 done
 
 
@@ -1838,7 +1838,7 @@ array=(Abyssorchomene_distinctus Alicella_gigantea Aoroides_spp Apseudomorpha_sp
 
 for a in "${array[@]}"; # Iterate through samples
 do
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide
 mkdir filtered all
 mv *.filtered_contigs.fasta filtered/
 mv *.all_contigs.fasta all/
@@ -1861,12 +1861,12 @@ This approach maintains maximum consistency with the existing aTRAM pipeline by 
 First, make the BLAST database.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/
+mkdir -p /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/
 
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/
 
-cp /bwdata3/bcummings/corophiid/01-TRINITY/GENOME/Hya_azt/Hya_azt.cds .
-cp /bwdata3/bcummings/corophiid/01-TRINITY/GENOME/Tig_cal/Tig_cal.cds .
+cp /bwdata3/bcummings/COROPHIID/01-TRINITY/GENOME/Hya_azt/Hya_azt.cds .
+cp /bwdata3/bcummings/COROPHIID/01-TRINITY/GENOME/Tig_cal/Tig_cal.cds .
 
 mv Hya_azt.cds Hyalella_azteca.cds
 mv Tig_cal.cds Tigriopus_californicus.cds
@@ -1879,13 +1879,13 @@ makeblastdb -in Tigriopus_californicus.cds -dbtype nucl -out Tigriopus_californi
 Then run BLAST. We use the same refseqs_NUC.fasta file used in the aTRAM assemblies to identify matches to UCE loci:
 
 ```bash
-blastn -query /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta \
+blastn -query /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta \
        -db Hyalella_azteca_db \
        -out Hyalella_azteca_raw_hits.tsv \
        -evalue 1e-10 \
        -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore"
 
-blastn -query /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta \
+blastn -query /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/refseqs_NUC.fasta \
        -db Tigriopus_californicus_db \
        -out Tigriopus_californicus_raw_hits.tsv \
        -evalue 1e-10 \
@@ -1895,21 +1895,21 @@ blastn -query /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig
 Then extract the matched sequences using a custom script which will write them to separate FASTA files, named in a similar way to the aTRAM output. The output will be placed in the same folder as the transcriptome UCE assemblies that are in line for stitching.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/output
+mkdir -p /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/output
 
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/
 
 perl /bwdata3/bcummings/SCRIPTS/extract_matched_cds_regions.pl \
      --cds Hyalella_azteca.cds \
      --blast Hyalella_azteca_raw_hits.tsv \
      --taxon Hyalella_azteca \
-     --output-dir /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/output
+     --output-dir /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/output
 
 perl /bwdata3/bcummings/SCRIPTS/extract_matched_cds_regions.pl \
      --cds Tigriopus_californicus.cds \
      --blast Tigriopus_californicus_raw_hits.tsv \
      --taxon Tigriopus_californicus \
-     --output-dir /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/output
+     --output-dir /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/output
 
 ```
 
@@ -1929,9 +1929,9 @@ This pipeline uses a script `exon_stitching.sh` which requires multiple inputs:
 First, copy the amino acid file that we made earlier.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
 
-cp -r /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/refseqs_AA.fasta /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
+cp -r /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/refseqs_AA.fasta /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
 ```
 
 Now, we need to use `getlastiteration.pl` to keep only the contigs from the last aTRAM iteration.
@@ -1941,14 +1941,14 @@ array=(Abyssorchomene_distinctus Alicella_gigantea Apseudomorpha_spp Armadillidi
 
 for a in "${array[@]}";
 do
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered
 perl /bwdata3/bcummings/SCRIPTS/getlastiteration.pl
-mkdir /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered/last
+mkdir /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered/last
 mv *.last.* last/
 cd ..
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/all
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/all
 perl /bwdata3/bcummings/SCRIPTS/getlastiteration.pl
-mkdir /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/all/last
+mkdir /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/all/last
 mv *.last.* last/
 done
 
@@ -1959,18 +1959,18 @@ For these outputs, we will need to combine matches for the same UCE (from differ
 First count and delete empty assembly files, if there are any.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
+mkdir -p /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
 
 array=(Abyssorchomene_distinctus Alicella_gigantea Apseudomorpha_spp Armadillidium_vulgare Asellus_hilgendorfii Caprella_irregularis Caprella_laeviscula Cerapus_spp Cheirimedeia_zotea Cyclaspis_gigas Cymothoa_exigua Deutella_californica Diastylopsis_goekei Dulichia_spp Eusirus_giganteus Gammaropsis_thompsoni Gammarus_lacustris Globosolembos_spp Grandidierella_japonica Hirondellea_gigas Hyperia_spp Idotea_balthica Ischyrocerus_anguipes Jassa_carltoni Jassa_marmorata Laticorophium_baconi Leptochelia_spp Metacaprella_anomala Microjassa_litotes Monocorophium_acherusicum Monocorophium_insidiosum Neomysis_awatschensis Neoxenodice_spp_1 Neoxenodice_spp_2 Niphargus_hrabei Orchestia_grillus Paragammaropsis_spp Parhyale_hawaiiensis Photis_conchicola Phoxokalliapseudes_tomiokaensis Platorchestia_hallaensis Podocerus_septumcarinatus Podocerus_spp Scalpellum_stearnsi Scopelocheirus_schellenbergi Sunamphitoe_spp_1 Sunamphitoe_spp_2 Talitrus_saltador Tanaella_kommritzia Tritella_laevis Zeuxo_ezoensis)
 
 for a in "${array[@]}";
 do
-cp /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered/last/* /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
+cp /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_output/${a}/output_nucleotide/filtered/last/* /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
 done
 
 #Change name so that UCE number is added before the taxon name. This let's us keep track of contigs after downstream processing.
 
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies
 
 for f in *.fasta; do
   taxon=$(echo "$f" | cut -d'.' -f1)
@@ -1993,9 +1993,9 @@ find . -type f -ls | wc -l
 Now, make the taxon list. Each name should match the portion before .lib in your UCE assembly filenames. For example, if your file is named "Abyssorchomene_distinctus_uce001.lib_Abyssorchomene_distinctus_refseqs_NUC_uce_001_Cer_spp_OG0001610_1.filtered_contigs.last.fasta", then the taxon name would be "uce001_Abyssorchomene_distinctus".
 
 ```bash
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
 
-for f in /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies/u*.fasta; do
+for f in /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/assemblies/u*.fasta; do
     fname=$(basename "$f")
     prefix=$(echo "$fname" | sed -E 's/^(uce_[0-9]{3}_[^\.]+)\.lib_.*/\1/')
     echo "$prefix"
@@ -2016,7 +2016,7 @@ For each taxon-UCE, the script outputs a stitched nucleotide FASTA file using th
 Make sure your stitching folder has a subfolder called "bin" containing the following scripts from Barrow et al 2019: editfasta.pl, getcontigs.pl, stitch.contigs.pl, summary_stats.pl
 
 ```bash
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0
 
 sh exon_stitching.sh tax_list.txt refseqs_AA.fasta assemblies/ 10
 
@@ -2032,7 +2032,7 @@ To perform this filtering, we run the custom Perl script ```select_best_stitched
 
 ```bash
 
-perl /bwdata3/bcummings/SCRIPTS/select_best_stitched_exons.pl /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/ /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons/
+perl /bwdata3/bcummings/SCRIPTS/select_best_stitched_exons.pl /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/exon_stitching2.0/ /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons/
 
 ```
 
@@ -2044,12 +2044,12 @@ To do this, we will run the shell script ```genome_atram_merge.sh``` which will 
 
 ```bash
 
-mkdir -p /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons_withgenome
+mkdir -p /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons_withgenome
 
 bash /bwdata3/bcummings/SCRIPTS/genome_atram_merge.sh \
-  /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons/ \
-  /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/output \
-  /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons_withgenome
+  /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons/ \
+  /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/genomes/output \
+  /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons_withgenome
 
 ```
 
@@ -2057,7 +2057,7 @@ We will then rerun the ```select_best_stitched_exons.pl``` script to make sure w
 
 ```bash
 
-perl /bwdata3/bcummings/SCRIPTS/select_best_stitched_exons.pl /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons_withgenome/ /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons_withgenome_final
+perl /bwdata3/bcummings/SCRIPTS/select_best_stitched_exons.pl /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons_withgenome/ /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons_withgenome_final
 
 ```
 
@@ -2068,13 +2068,13 @@ We will perform a recipricol BLAST check on the final stitched exons to identify
 ```bash
 #First combine all the sequences into one file
 
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM
-mkdir /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM
+mkdir /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit
 cd reciprocal_besthit/
 mkdir db
 cd db/
 
-for f in /bwdata3/bcummings/corophiid/06-PAL2NAL/mintaxa75%_ARBOR_BAITDESIGN/02-CDS/*.fa; do
+for f in /bwdata3/bcummings/COROPHIID/06-PAL2NAL/mintaxa75%_ARBOR_BAITDESIGN/02-CDS/*.fa; do
     og=$(basename "$f" .fa | sed 's/_pruned$//')
     awk -v og="$og" '/^>/{print $0"|"og; next} {print}' "$f"
 done > transcriptome_genes.fasta
@@ -2096,11 +2096,11 @@ for filename in *.csv; do echo "$filename"; cat "$filename"; done > blast_output
 Go through BLAST output and flag any locus-individual combos where top hit is not the desired locus. In our case, use the "orthogroup_map" tab in the "probes_working.xlsx" file to figure out which locus corresponds to which UCE number. Remove mismatches from stitched exons files before proceeding with downstream analyses.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
+mkdir -p /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
 
-cp -r /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons_withgenome_final/*stitched_exons.fasta /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
+cp -r /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/atram_stitching/stitched_exons_withgenome_final/*stitched_exons.fasta /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
 
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/
 
 
 patterns="uce_024_Caprella_irregularis.|uce_024_Caprella_laeviscula.|uce_024_Cheirimedeia_zotea.|uce_024_Deutella_californica.|uce_024_Dulichia_spp.|uce_024_Gammaropsis_thompsoni.|uce_024_Ischyrocerus_anguipes.|uce_024_Jassa_carltoni.|uce_024_Jassa_marmorata.|uce_024_Laticorophium_baconi.|uce_024_Metacaprella_anomala.|uce_024_Microjassa_litotes.|uce_024_Monocorophium_acherusicum.|uce_024_Monocorophium_insidiosum.|uce_024_Neoxenodice_spp_1.|uce_024_Neoxenodice_spp_2.|uce_024_Podocerus_septumcarinatus.|uce_024_Podocerus_spp.|uce_024_Sunamphitoe_spp_1.|uce_024_Sunamphitoe_spp_2.|uce_024_Tritella_laevis.|uce_025_Parhyale_hawaiiensis.|uce_034_Podocerus_septumcarinatus.|uce_055_Cheirimedeia_zotea.|uce_055_Monocorophium_acherusicum.|uce_055_Podocerus_septumcarinatus.|uce_055_Sunamphitoe_spp_1.|uce_068_Dulichia_spp.|uce_070_Armadillidium_vulgare.|uce_070_Eusirus_giganteus.|uce_070_Paragammaropsis_spp.|uce_070_Talitrus_saltador.|uce_099_Hirondellea_gigas."
@@ -2125,23 +2125,23 @@ Before doing anything, we need to edit the taxa names that are found in both tra
 
 ```bash
 
-find /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Ischyrocerus_anguipes/Ischyrocerus_anguipes_2/g' {} +
+find /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Ischyrocerus_anguipes/Ischyrocerus_anguipes_2/g' {} +
 
-find /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Cerapus_spp/Cerapus_spp_2/g' {} +
+find /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Cerapus_spp/Cerapus_spp_2/g' {} +
 
-find /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Monocorophium_acherusicum/Monocorophium_acherusicum_2/g' {} +
+find /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Monocorophium_acherusicum/Monocorophium_acherusicum_2/g' {} +
 
-find /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Paragammaropsis_spp/Paragammaropsis_spp_2/g' {} +
+find /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Paragammaropsis_spp/Paragammaropsis_spp_2/g' {} +
 
 
 
-find /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Ischyrocerus_anguipes/Ischyrocerus_anguipes_1/g' {} +
+find /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Ischyrocerus_anguipes/Ischyrocerus_anguipes_1/g' {} +
 
-find /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Cerapus_spp/Cerapus_spp_1/g' {} +
+find /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Cerapus_spp/Cerapus_spp_1/g' {} +
 
-find /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Monocorophium_acherusicum/Monocorophium_acherusicum_1/g' {} +
+find /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Monocorophium_acherusicum/Monocorophium_acherusicum_1/g' {} +
 
-find /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Paragammaropsis_spp/Paragammaropsis_spp_1/g' {} +
+find /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/ -type f -exec sed -i 's/Paragammaropsis_spp/Paragammaropsis_spp_1/g' {} +
 
 
 ```
@@ -2150,11 +2150,11 @@ We will then use custom Python scripts by Barrow et al 2019 to reformat aTRAM-as
 
 ```bash
 #TARGET CAPTURE UCE DATA
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/03-Convert_to_Phyluce
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/03-Convert_to_Phyluce
 
-cp /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/*stitched_exons.fasta /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/03-Convert_to_Phyluce/
+cp /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/*stitched_exons.fasta /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/03-Convert_to_Phyluce/
 
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/03-Convert_to_Phyluce
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/03-Convert_to_Phyluce
 
 #remove the underscore between the uce and uce number
 for file in uce_*.stitched_exons.fasta; do
@@ -2164,7 +2164,7 @@ done
 
 python /bwdata3/bcummings/SCRIPTS/ConvertATRAMtoPHYLUCE.py
 
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/03-Convert_to_Phyluce/to_phyluce
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/03-Convert_to_Phyluce/to_phyluce
 
 mv *-phyluce.fasta to_phyluce
 
@@ -2178,15 +2178,15 @@ sed -i 's/\(_uce_[0-9]\{3\}\)//' atram_targetcapture.fasta
 
 ### USE PHYLUCE PIPELINE TO EXPLODE FASTAS AND SUMMARIZE
 
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/04-Phyluce_explode
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/04-Phyluce_explode
 
-cd /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/04-Phyluce_explode
+cd /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/04-Phyluce_explode
 
 micromamba activate /bwdata3/auehling/00-MICROMAMBA/phyluce-1.7.3
 
 # Explode the monolithic FASTA by taxon
 phyluce_assembly_explode_get_fastas_file \
-    --input /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/03-Convert_to_Phyluce/to_phyluce/atram_targetcapture.fasta \
+    --input /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/03-Convert_to_Phyluce/to_phyluce/atram_targetcapture.fasta \
     --output individual_fastas \
     --by-taxon
 
@@ -2199,11 +2199,11 @@ done > fasta_lengths_targetcapture.csv &
 
 
 #TRANSCRIPTOME UCE DATA
-mkdir -p /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/03-Convert_to_Phyluce
+mkdir -p /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/03-Convert_to_Phyluce
 
-cp /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/*stitched_exons.fasta /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/03-Convert_to_Phyluce/
+cp /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/02-Contig_Assembly_aTRAM/reciprocal_besthit/seq_clean/*stitched_exons.fasta /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/03-Convert_to_Phyluce/
 
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/03-Convert_to_Phyluce
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/03-Convert_to_Phyluce
 
 #remove the underscore between the uce and uce number
 for file in uce_*.stitched_exons.fasta; do
@@ -2213,7 +2213,7 @@ done
 
 python /bwdata3/bcummings/SCRIPTS/ConvertATRAMtoPHYLUCE.py
 
-mkdir -p /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/03-Convert_to_Phyluce/to_phyluce
+mkdir -p /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/03-Convert_to_Phyluce/to_phyluce
 
 mv *-phyluce.fasta to_phyluce
 
@@ -2226,15 +2226,15 @@ sed -i 's/\(_uce_[0-9]\{3\}\)//' atram_transcriptome.fasta
 
 ### USE PHYLUCE PIPELINE TO EXPLODE FASTAS AND SUMMARIZE
 
-mkdir -p /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/04-Phyluce_explode
+mkdir -p /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/04-Phyluce_explode
 
-cd /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/04-Phyluce_explode
+cd /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/04-Phyluce_explode
 
 micromamba activate /bwdata3/jfryan/00-MICROMAMBA/phyluce-1.7.3
 
 # Explode the monolithic FASTA by taxon
 phyluce_assembly_explode_get_fastas_file \
-    --input /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/03-Convert_to_Phyluce/to_phyluce/atram_transcriptome.fasta \
+    --input /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/03-Convert_to_Phyluce/to_phyluce/atram_transcriptome.fasta \
     --output individual_fastas \
     --by-taxon
 
@@ -2260,12 +2260,12 @@ We will now re-assemble the data with Phyluce instead of aTRAM to see if we can 
 The assembly program expects the input to be a certain way. Re-format the input directory using the code below:
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input
+mkdir -p /bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input
 
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input
 
-src_dir=/bwdata3/bcummings/corophiid/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC
-dst_dir=/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input
+src_dir=/bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/01-Trimming/01-TRIMMOMATIC
+dst_dir=/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input
 
 mkdir -p "$dst_dir"
 
@@ -2284,27 +2284,27 @@ Create a configuration file ```assembly.conf``` which lists the samples to be as
 
 ```conf
 [samples]
-Amphideutopus_oculatus:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Amphideutopus_oculatus/
-Ampithoe_lacertosa:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Ampithoe_lacertosa/
-Aoroides_spp:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Aoroides_spp/
-Cerapus_spp:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Cerapus_spp/
-Chevaliidae_spp:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Chevaliidae_spp/
-Cyamus_boopis:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Cyamus_boopis/
-Cyamus_erraticus:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Cyamus_erraticus/
-Cyamus_scammoni:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Cyamus_scammoni/
-Dyopedos_arcticus:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Dyopedos_arcticus/
-Ischyrocerus_anguipes:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Ischyrocerus_anguipes/
-Latigammaropsis_spp:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Latigammaropsis_spp/
-Microprotopus_raneyi:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Microprotopus_raneyi/
-Monocorophium_acherusicum:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Monocorophium_acherusicum/
-Paragammaropsis_spp:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Paragammaropsis_spp/
-Plesiolembos_rectangulatus:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Plesiolembos_rectangulatus/
-Podocerus_cristatus_1:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Podocerus_cristatus_1/
-Podocerus_cristatus_2:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Podocerus_cristatus_2/
-Protomedeia_prudens:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Protomedeia_prudens/
-Pseudampithoides_incurvaria:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Pseudampithoides_incurvaria/
-Tropichelura_spp_1:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Tropichelura_spp_1/
-Tropichelura_spp_2:/bwdata3/bcummings/corophiid/13-PHYLUCE/01-Phyluce_input/Tropichelura_spp_2/
+Amphideutopus_oculatus:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Amphideutopus_oculatus/
+Ampithoe_lacertosa:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Ampithoe_lacertosa/
+Aoroides_spp:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Aoroides_spp/
+Cerapus_spp:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Cerapus_spp/
+Chevaliidae_spp:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Chevaliidae_spp/
+Cyamus_boopis:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Cyamus_boopis/
+Cyamus_erraticus:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Cyamus_erraticus/
+Cyamus_scammoni:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Cyamus_scammoni/
+Dyopedos_arcticus:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Dyopedos_arcticus/
+Ischyrocerus_anguipes:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Ischyrocerus_anguipes/
+Latigammaropsis_spp:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Latigammaropsis_spp/
+Microprotopus_raneyi:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Microprotopus_raneyi/
+Monocorophium_acherusicum:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Monocorophium_acherusicum/
+Paragammaropsis_spp:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Paragammaropsis_spp/
+Plesiolembos_rectangulatus:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Plesiolembos_rectangulatus/
+Podocerus_cristatus_1:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Podocerus_cristatus_1/
+Podocerus_cristatus_2:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Podocerus_cristatus_2/
+Protomedeia_prudens:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Protomedeia_prudens/
+Pseudampithoides_incurvaria:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Pseudampithoides_incurvaria/
+Tropichelura_spp_1:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Tropichelura_spp_1/
+Tropichelura_spp_2:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/01-Phyluce_input/Tropichelura_spp_2/
 ```
 
 #### 4.7.3 *Assemble using SPAdes*
@@ -2321,9 +2321,9 @@ micromamaba activate /bwdata3/auehling/00-MICROMAMBA/phyluce-1.7.3
 
 screen -S phyluce
 
-mkdir -p /bwdata3/bcummings/corophiid/13-PHYLUCE/02-Contig_Assembly_relaxed
+mkdir -p /bwdata3/bcummings/COROPHIID/13-PHYLUCE/02-Contig_Assembly_relaxed
 
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/02-Contig_Assembly_relaxed
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/02-Contig_Assembly_relaxed
 
 phyluce_assembly_assemblo_spades --conf assembly.conf --output spades-assemblies  --cores 80 --memory 700
 
@@ -2337,7 +2337,7 @@ We will re-run the ```phyluce_assembly_get_fastq_lengths``` program on the conti
 # in nzinga:
 micromamba activate /bwdata3/jfryan/00-MICROMAMBA/phyluce-1.7.3
 
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/02-Contig_Assembly_relaxed/spades-assemblies/contigs/
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/02-Contig_Assembly_relaxed/spades-assemblies/contigs/
 
 for i in *.fasta; do echo "Processing $i"; phyluce_assembly_get_fasta_lengths --input "$i" --csv >> phyluce_assembly_get_fastq_lengths_output.csv; done
 
@@ -2347,7 +2347,7 @@ mv phyluce_assembly_get_fastq_lengths_output.csv ../..
 
 Rename taxa which are duplicates of transcriptome taxa to avoid confusion later on
 ```bash
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/02-Contig_Assembly_relaxed/spades-assemblies/contigs
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/02-Contig_Assembly_relaxed/spades-assemblies/contigs
 
 mv Cerapus_spp.contigs.fasta Cerapus_spp_2.contigs.fasta
 mv Monocorophium_acherusicum.contigs.fasta Monocorophium_acherusicum_2.contigs.fasta
@@ -2362,9 +2362,9 @@ Now we can filter through the assemblies to figure out which are UCE loci and wh
 ```bash
 micromamba activate /bwdata3/jfryan/00-MICROMAMBA/phyluce-1.7.3
 
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/02-Contig_Assembly_relaxed
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/02-Contig_Assembly_relaxed
 
-cp -r /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/probes_renamed.fasta .
+cp -r /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/probes_renamed.fasta .
 
 phyluce_assembly_match_contigs_to_probes \
 --contigs spades-assemblies/contigs \
@@ -2423,12 +2423,12 @@ First, we need to reformat the orthologs to fit the format that phyluce expects.
 
 ```bash
 
-mkdir -p /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/input
-mkdir -p /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/input_reformatted
+mkdir -p /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/input
+mkdir -p /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/input_reformatted
 
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/input
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/input
 
-cp -r /bwdata3/bcummings/corophiid/06-PAL2NAL/mintaxa75%/03-P2N/*.fa .
+cp -r /bwdata3/bcummings/COROPHIID/06-PAL2NAL/mintaxa75%/03-P2N/*.fa .
 
 cd ..
 cd input_reformatted
@@ -2443,9 +2443,9 @@ perl /bwdata3/bcummings/SCRIPTS/rename_orthologs.pl .
 Make a separate directory for each transcriptome and copy transcriptomes into their respective directories.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
+mkdir -p /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
 
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
 
 for file in ../input_reformatted/*; do [ -f "$file" ] && folder_name=$(basename "$file" | cut -d'.' -f1) && mkdir -p "$folder_name" && cp "$file" "$folder_name/" || echo "Failed to copy $file"; done
 
@@ -2455,7 +2455,7 @@ for file in ../input_reformatted/*; do [ -f "$file" ] && folder_name=$(basename 
 Convert each fasta file to 2bit files such as below:
 
 ```bash
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
 
 for folder in *; do if [ -d "$folder" ]; then echo "Processing $folder..."; faToTwoBit "$folder/$folder.orthologs.fasta" "$folder/$folder.2bit" && twoBitInfo "$folder/$folder.2bit" "$folder/sizes.tab" && head -n 5 "$folder/sizes.tab"; fi; done
 
@@ -2475,9 +2475,9 @@ head -n 5 Ali_gig/sizes.tab
 Copy your probe set into the same directory as the transcriptome folders.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
 
-cp /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/probes_renamed.fasta .
+cp /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/probes_renamed.fasta .
 ```
 
 Align the probes to the transcriptomes. The program that we are going to run assumes that each 2bit genome file is in it’s own directory (which we have ensured, above).
@@ -2492,8 +2492,8 @@ We now need to create a configuration file ```transcriptomes.conf``` that tells 
 
 ```
 [scaffolds]
-Aby_dis:/bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir/Aby_dis/Aby_dis.2bit
-Ali_gig:/bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir/Ali_gig/Ali_gig.2bit
+Aby_dis:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir/Aby_dis/Aby_dis.2bit
+Ali_gig:/bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir/Ali_gig/Ali_gig.2bit
 #...etc.
 
 ```
@@ -2503,7 +2503,7 @@ Now we can extract the loci identified during the search from each respective tr
 ```bash
 micromamba activate /bwdata3/jfryan/00-MICROMAMBA/phyluce-1.7.3
 
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
 
 phyluce_probe_slice_sequence_from_genomes --lastz tutorial3-transcriptome-lastz --conf transcriptomes.conf --flank 500 --name-pattern "probes_renamed.fasta_v_{}.lastz.clean" --output output
 ```
@@ -2511,7 +2511,7 @@ phyluce_probe_slice_sequence_from_genomes --lastz tutorial3-transcriptome-lastz 
 We will rename these files and deflines within the files to be consistent with the format other assembled contigs above and to keep track of their origin.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
 
 cp -r output output_renamed
 cd output_renamed
@@ -2586,9 +2586,9 @@ We can filter through the "assemblies" to figure out which are UCE loci and whic
 ```bash
 micromamba activate /bwdata3/jfryan/00-MICROMAMBA/phyluce-1.7.3
 
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir
 
-cp -r /bwdata3/bcummings/corophiid/13-PHYLUCE/02-Contig_Assembly_relaxed/probes_renamed.fasta .
+cp -r /bwdata3/bcummings/COROPHIID/13-PHYLUCE/02-Contig_Assembly_relaxed/probes_renamed.fasta .
 
 phyluce_assembly_match_contigs_to_probes \
 --contigs output_renamed \
@@ -2611,7 +2611,7 @@ The easiest way for you to use the extracted sequences is to basically pretend l
 We need to generate a data matrix configuration file that will contain our taxa and UCE loci that will be extracted. First, we will create this directory.
 
 ```bash
-mkdir -p /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction
+mkdir -p /bwdata3/bcummings/COROPHIID/13-PHYLUCE/04-UCE_extraction
 ```
 
 Then we will add a taxon-configuration file "taxon-set.conf" which denotes the taxa from each dataset. The target capture taxa will be listed without an asterisk, and the transcriptome taxa will be listed with an asterisk.
@@ -2631,16 +2631,16 @@ Apseudomorpha_spp*
 Then, you need to pass ```phyluce_assembly_get_match_counts``` the location of both the target capture database (--locus-db) and the transcriptome database (--extend-locus-db).
 
 ```bash
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/04-UCE_extraction
 
 micromamba activate /bwdata3/jfryan/00-MICROMAMBA/phyluce-1.7.3
 
 # create the data matrix configuration file
 phyluce_assembly_get_match_counts \
-    --locus-db /bwdata3/bcummings/corophiid/13-PHYLUCE/02-Contig_Assembly_relaxed/uce-search-results/probe.matches.sqlite \
+    --locus-db /bwdata3/bcummings/COROPHIID/13-PHYLUCE/02-Contig_Assembly_relaxed/uce-search-results/probe.matches.sqlite \
     --taxon-list-config taxon-set.conf \
     --taxon-group 'dataset_all' \
-    --extend-locus-db /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir/uce-search-results/probe.matches.sqlite \
+    --extend-locus-db /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir/uce-search-results/probe.matches.sqlite \
     --output dataset_all.conf \
     --incomplete-matrix
 ```
@@ -2648,24 +2648,24 @@ phyluce_assembly_get_match_counts \
 We now can extract the appropriate FASTA sequences from each assembly representing the taxon of interest.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/04-UCE_extraction
 
 micromamba activate /bwdata3/jfryan/00-MICROMAMBA/phyluce-1.7.3
 
 phyluce_assembly_get_fastas_from_match_counts \
-    --contigs /bwdata3/bcummings/corophiid/13-PHYLUCE/02-Contig_Assembly_relaxed/spades-assemblies/contigs/ \
-    --locus-db /bwdata3/bcummings/corophiid/13-PHYLUCE/02-Contig_Assembly_relaxed/uce-search-results/probe.matches.sqlite \
+    --contigs /bwdata3/bcummings/COROPHIID/13-PHYLUCE/02-Contig_Assembly_relaxed/spades-assemblies/contigs/ \
+    --locus-db /bwdata3/bcummings/COROPHIID/13-PHYLUCE/02-Contig_Assembly_relaxed/uce-search-results/probe.matches.sqlite \
     --match-count-output dataset_all.conf \
     --incomplete-matrix dataset_all.incomplete \
-    --extend-locus-db /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir/uce-search-results/probe.matches.sqlite \
-    --extend-locus-contigs /bwdata3/bcummings/corophiid/13-PHYLUCE/03-Transcriptomes/transcriptome_dir/output_renamed/ \
+    --extend-locus-db /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir/uce-search-results/probe.matches.sqlite \
+    --extend-locus-contigs /bwdata3/bcummings/COROPHIID/13-PHYLUCE/03-Transcriptomes/transcriptome_dir/output_renamed/ \
     --output dataset_all.fasta
 ```
 
 This outputs a monolithic fasta file. We will now explode this fasta file to get individual statistics for taxa and UCEs.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction
+cd /bwdata3/bcummings/COROPHIID/13-PHYLUCE/04-UCE_extraction
 
 micromamba activate /bwdata3/jfryan/00-MICROMAMBA/phyluce-1.7.3
 
@@ -2689,18 +2689,18 @@ Before we combine the PHYLUCE data with the aTRAM data, we will remove data from
 ```bash
 
 #Do this for aTRAM results
-mkdir -p /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas_removed
+mkdir -p /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas_removed
 
-mv /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas/Monocorophium-acherusicum-2.unaligned.fasta /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas_removed
+mv /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas/Monocorophium-acherusicum-2.unaligned.fasta /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas_removed
 
-mv /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas/Cerapus-spp-2.unaligned.fasta /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas_removed
+mv /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas/Cerapus-spp-2.unaligned.fasta /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas_removed
 
 #Do this for PHYLUCE results
-mkdir -p /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction/individual_fastas_removed
+mkdir -p /bwdata3/bcummings/COROPHIID/13-PHYLUCE/04-UCE_extraction/individual_fastas_removed
 
-mv /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction/individual_fastas/Monocorophium-acherusicum-2.unaligned.fasta /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction/individual_fastas_removed
+mv /bwdata3/bcummings/COROPHIID/13-PHYLUCE/04-UCE_extraction/individual_fastas/Monocorophium-acherusicum-2.unaligned.fasta /bwdata3/bcummings/COROPHIID/13-PHYLUCE/04-UCE_extraction/individual_fastas_removed
 
-mv /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction/individual_fastas/Cerapus-spp-2.unaligned.fasta /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction/individual_fastas_removed
+mv /bwdata3/bcummings/COROPHIID/13-PHYLUCE/04-UCE_extraction/individual_fastas/Cerapus-spp-2.unaligned.fasta /bwdata3/bcummings/COROPHIID/13-PHYLUCE/04-UCE_extraction/individual_fastas_removed
 
 ```
 
@@ -2713,14 +2713,14 @@ mv /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction/individual_fastas/C
 We will combine the target capture data from the PHYLUCE and aTRAM fasta files using a custom script ```combine_assemblies.pl```. This script also removes duplicate UCE sequences, making sure to keep the longest one.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/14-ALIGN/
+cd /bwdata3/bcummings/COROPHIID/14-ALIGN/
 
 perl /bwdata3/bcummings/SCRIPTS/combine_assemblies.pl \
   -o all-taxa-targetcapture.fasta \
   -l duplicates.log \
   --key base \
-  /bwdata3/bcummings/corophiid/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas \
-  /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction/individual_fastas
+  /bwdata3/bcummings/COROPHIID/11-TARGETCAPTURE/04-Phyluce_explode/individual_fastas \
+  /bwdata3/bcummings/COROPHIID/13-PHYLUCE/04-UCE_extraction/individual_fastas
 
 
 perl /bwdata3/bcummings/SCRIPTS/uce_per_taxon_summary.pl all-taxa-targetcapture.fasta > targetcapture_uce_per_taxon.tsv
@@ -2732,14 +2732,14 @@ perl /bwdata3/bcummings/SCRIPTS/uce_per_taxon_summary.pl all-taxa-targetcapture.
 We will combine the transcriptome data from the PHYLUCE and aTRAM fasta files using the same method.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/14-ALIGN/
+cd /bwdata3/bcummings/COROPHIID/14-ALIGN/
 
 perl /bwdata3/bcummings/SCRIPTS/combine_assemblies.pl \
   -o all-taxa-transcriptome.fasta \
   -l duplicates.log \
   --key base \
-  /bwdata3/bcummings/corophiid/12-TRANSCRIPTOME_HARVESTING/04-Phyluce_explode/individual_fastas \
-  /bwdata3/bcummings/corophiid/13-PHYLUCE/04-UCE_extraction/individual_fastas
+  /bwdata3/bcummings/COROPHIID/12-TRANSCRIPTOME_HARVESTING/04-Phyluce_explode/individual_fastas \
+  /bwdata3/bcummings/COROPHIID/13-PHYLUCE/04-UCE_extraction/individual_fastas
 
 perl /bwdata3/bcummings/SCRIPTS/uce_per_taxon_summary.pl all-taxa-transcriptome.fasta > transcriptome_uce_per_taxon.tsv
 ```
@@ -2749,7 +2749,7 @@ perl /bwdata3/bcummings/SCRIPTS/uce_per_taxon_summary.pl all-taxa-transcriptome.
 Now combine the transcriptome data and target capture data.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/14-ALIGN/
+cd /bwdata3/bcummings/COROPHIID/14-ALIGN/
 
 perl /bwdata3/bcummings/SCRIPTS/combine_assemblies.pl \
   -o all-taxa-combined.fasta \
@@ -2766,7 +2766,7 @@ We filter the combined FASTA file by UCE recovery, retaining target-capture ingr
 We performed this filtering step using the custom script ```filter_uces_by_recovery.pl```. This script will also produce a list of taxa which were removed called all-taxa-combined-recovery-0.3.removed_taxa.txt. We will use this later to prune our transcriptome backbone tree.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/14-ALIGN/
+cd /bwdata3/bcummings/COROPHIID/14-ALIGN/
 
 perl /bwdata3/bcummings/SCRIPTS/filter_taxa_by_uce_coverage.pl \
     --in all-taxa-combined.fasta \
@@ -2786,7 +2786,7 @@ We summarize UCE recovery and sequence length statistics for the final dataset u
 To generate these summaries, we exploded the final combined FASTA file by taxon and calculated basic sequence statistics for each taxon using PHYLUCE utilities.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/14-ALIGN/
+cd /bwdata3/bcummings/COROPHIID/14-ALIGN/
 
 micromamba activate /bwdata3/jfryan/00-MICROMAMBA/phyluce-1.7.3
 
@@ -2824,7 +2824,7 @@ library(tidyverse)
 library(fs)
 
 # Path to FASTA directory (unaligned sequences, one file per locus)
-fasta_file  <- "C:/Users/bmc82/Documents/UF/PhD_Projects/1-corophiid/Data/Data_NextGenSeq/all-taxa-combined-recovery-0.3_new.fasta"
+fasta_file  <- "C:/Users/bmc82/Documents/UF/PhD_Projects/1-corophiidan/Data/Data_NextGenSeq/all-taxa-combined-recovery-0.3_new.fasta"
 
 # Read sequences
 seqs <- readDNAStringSet(fasta_file)
@@ -2874,9 +2874,9 @@ If desired, at this point you can run Kraken2 on the combined data to double che
 
 ```bash
 #Optional Kraken2 pipeline:
-mkdir -p /bwdata3/bcummings/corophiid/14-ALIGN/05-kraken2
+mkdir -p /bwdata3/bcummings/COROPHIID/14-ALIGN/05-kraken2
 
-cd /bwdata3/bcummings/corophiid/14-ALIGN/05-kraken2
+cd /bwdata3/bcummings/COROPHIID/14-ALIGN/05-kraken2
 
 #split combined fasta into individual fasta files
 mkdir -p individual_fastas_split
@@ -2891,13 +2891,13 @@ awk -v outdir="individual_fastas_split" '
     file = outdir "/" name ".fasta"
   }
   { print >> file }
-' /bwdata3/bcummings/corophiid/14-ALIGN/all-taxa-combined-recovery-0.3_new.fasta
+' /bwdata3/bcummings/COROPHIID/14-ALIGN/all-taxa-combined-recovery-0.3_new.fasta
 
 #when you activate phyluce, it will also activate kraken2
 micromamba activate /bwdata3/auehling/00-MICROMAMBA/phyluce-1.7.3
 
 #The script "kraken_search.sh" will search a specific assembly:
-for file in /bwdata3/bcummings/corophiid/14-ALIGN/05-kraken2/individual_fastas_split/*.fasta; do base=$(basename "$file" .fasta); kraken2 --db /bwdata3/auehling/03-BRYO/02-Kraken2/kraken2_db/minikraken2_v2_8GB_201904_UPDATE --threads 8 --output kraken2_output_${base}.txt --report kraken2_report_${base}.txt "$file"; done
+for file in /bwdata3/bcummings/COROPHIID/14-ALIGN/05-kraken2/individual_fastas_split/*.fasta; do base=$(basename "$file" .fasta); kraken2 --db /bwdata3/auehling/03-BRYO/02-Kraken2/kraken2_db/minikraken2_v2_8GB_201904_UPDATE --threads 8 --output kraken2_output_${base}.txt --report kraken2_report_${base}.txt "$file"; done
 ```
 
 #### 4.9.7 *Remove problematic taxa (optional)*
@@ -2905,7 +2905,7 @@ for file in /bwdata3/bcummings/corophiid/14-ALIGN/05-kraken2/individual_fastas_s
 For now, we will also remove the problematic taxon Tro_sp1. Even though the quality is good, it is falling out in weird places. This group needs to be re-evaluated in future trees.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/14-ALIGN/
+cd /bwdata3/bcummings/COROPHIID/14-ALIGN/
 
 awk -v RS='>' -v ORS='' '
   NR==1{next}                                # skip leading empty record
@@ -2926,7 +2926,7 @@ awk -v RS='>' -v ORS='' '
 We can now produce multiple sequence alignments with MAFFT. We will omit edge-trimming and retain full alignments.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/14-ALIGN
+cd /bwdata3/bcummings/COROPHIID/14-ALIGN
 
 mkdir logs_all-taxa-combined-recovery-0.3-noTrospp_new
 
@@ -2951,7 +2951,7 @@ phyluce_align_get_align_summary_data --alignments mafft-0.3-all-taxa-combined-re
 Now, remove locus names from the sequences and generate occupancy stats.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/14-ALIGN
+cd /bwdata3/bcummings/COROPHIID/14-ALIGN
 
 micromamba activate /bwdata3/jfryan/00-MICROMAMBA/phyluce-1.7.3
 
@@ -2980,7 +2980,7 @@ To do this, we will extract only the target-capture taxa using ```phyluce_align_
 This ensures that we don't lose more UCE's than necessary. If all taxa (including transcriptomes) are included in the filtering step, loci that are well recovered in target-capture samples may be excluded simply because many transcriptomes contain missing or partial loci. Filtering only on target-capture taxa avoids unnecessarily discarding loci due to the variable recovery in our data.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/14-ALIGN
+cd /bwdata3/bcummings/COROPHIID/14-ALIGN
 
 micromamba activate /bwdata3/jfryan/00-MICROMAMBA/phyluce-1.7.3
 
@@ -3080,19 +3080,19 @@ Copy files to new folder.
 
 ```bash
 # constraint tree unrooted, w/o Tro_sp1, aTRAM + PHYLUCE data
-mkdir -p /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/uce_alignments
+mkdir -p /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/uce_alignments
 
-cp -r /bwdata3/bcummings/corophiid/14-ALIGN/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/*.nexus /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/uce_alignments
+cp -r /bwdata3/bcummings/COROPHIID/14-ALIGN/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/*.nexus /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/uce_alignments
 
-mkdir -p /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/og_alignments
+mkdir -p /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/og_alignments
 
-cp -r /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/input_IQTREE/*.fa /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/og_alignments
+cp -r /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/input_IQTREE/*.fa /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/og_alignments
 ```
 
 Rename Isc_ang, Cer_spp, Mon_ach, and Par_spp in the og_alignments to be Isc_an1, Cer_sp1, Mon_ac1, and Par_sp1 to match the uce files.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/og_alignments
+cd /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/og_alignments
 
 for file in *.fa; do
   sed -i 's/\bIsc_ang\b/Isc_an1/g' "$file"
@@ -3115,11 +3115,11 @@ done
 Convert UCE .nexus files to .fa files to match format of orthogroup files
 
 ```bash
-cd /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE
+cd /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE
 
 perl /bwdata3/bcummings/SCRIPTS/convert_nexus_to_fasta.pl uce_alignments
 
-cd /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/uce_alignments
+cd /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/uce_alignments
 
 rm -r *.nexus
 
@@ -3129,7 +3129,7 @@ Shorten taxa names to match the format of the taxa in the original transcriptome
 
 ```bash
 #"shorten_nexus_headers.pl".
-cd /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/uce_alignments
+cd /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE/uce_alignments
 
 for file in *.fa; do
   perl /bwdata3/bcummings/SCRIPTS/shorten_headers.pl --input "$file" --output "$file.tmp" && mv "$file.tmp" "$file"
@@ -3150,7 +3150,7 @@ uce-003	OG0002010
 Then filter OG alignments.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE
+cd /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE
 
 perl /bwdata3/bcummings/SCRIPTS/filter_and_rename_uces.pl \
   --uce uce_alignments/ \
@@ -3169,7 +3169,7 @@ We will use a custom script which will track all unique taxa across all loci, fo
 Make sure to check the concatenated data and to ensure filtered taxa are not in the dataset. You can do this using "grep -r "TAX_SPP" concatenated.fasta
 
 ```bash
-cd /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE
+cd /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/input_IQTREE
 
 perl /bwdata3/bcummings/SCRIPTS/merge_and_concatenate_alignments.pl \
   --input combined_alignments/ \
@@ -3178,10 +3178,10 @@ perl /bwdata3/bcummings/SCRIPTS/merge_and_concatenate_alignments.pl \
 
 perl /bwdata3/bcummings/SCRIPTS/partition_to_nexus.pl --input=partitions.txt --output=partitions.nex
 
-mkdir -p /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/output_IQTREE
+mkdir -p /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/output_IQTREE
 
 mv partitions.nex partitions.txt concatenated.fasta \
-  /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/output_IQTREE
+  /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/output_IQTREE
 
 ```
 
@@ -3190,13 +3190,13 @@ mv partitions.nex partitions.txt concatenated.fasta \
 Copy the transcriptome constraint tree to the working folder.
 
 ```bash
-cp /bwdata3/bcummings/corophiid/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/output_IQTREE/NUC_bestgenetreemodels_min75.treefile /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/output_IQTREE
+cp /bwdata3/bcummings/COROPHIID/07-SPECIESTREE/mintaxa75%/NUC_bestgenetreemodels/output_IQTREE/NUC_bestgenetreemodels_min75.treefile /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/output_IQTREE
 ```
 
 Rename taxa to match the current dataset. Specifically, "Isc_ang", "Cer_spp", "Mon_ach", and "Par_spp" in  constraint tree should be changed to "Isc_an1", "Cer_sp1", "Mon_ac1", and "Par_sp1" to be consistent with the target capture data.
 
 ```bash
-cd /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/output_IQTREE
+cd /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/output_IQTREE
 
 sed -E \
   -e 's/\bIsc_ang\b/Isc_an1/g' \
@@ -3239,7 +3239,7 @@ Now we need to test the constrained tree against an unconstrained tree to see if
 First, build the unconstrained species tree. This will take LONGER than the tree above (weeks and weeks).
 
 ```bash
-cd /bwdata3/bcummings/corophiid/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/output_IQTREE
+cd /bwdata3/bcummings/COROPHIID/15-SPECIESTREE/mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new/NUC_bestgenetreemodels_new/output_IQTREE
 
 #Make a tree with the entire dataset without constraint:
 iqtree -s concatenated.fasta -p partitions.nex -m MFP+MERGE -bb 1000 -alrt 1000 -pre mafft-0.3-all-taxa-combined-recovery-0.3-noTrospp-clean-completenesstargetcap-0.5_new_unconstrained

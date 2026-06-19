@@ -130,6 +130,11 @@ This workflow demonstrates approaches for:
 
 <p align="center">
   <img src="outputs/Tree_Results_Transcriptome-TargetCapture.png" width="75%">
+</p>
+
+---
+
+<p align="center">
   <img src="outputs/ASR_Silk.png" width="75%">
 </p>
 

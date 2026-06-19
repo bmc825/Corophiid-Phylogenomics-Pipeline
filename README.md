@@ -126,6 +126,15 @@ This workflow demonstrates approaches for:
 
 ---
 
+## Example Outputs
+
+<p align="center">
+  <img src="outputs/Tree_Results_Transcriptome-TargetCapture.png" width="75%">
+  <img src="outputs/ASR_Silk.png" width="75%">
+</p>
+
+---
+
 ## Associated Research
 
 Cummings, B.C. *Unraveling Amphipod Diversity Across Phylogenetic, Phenotypic, and Community Scales*. PhD Dissertation, University of Florida (2026).

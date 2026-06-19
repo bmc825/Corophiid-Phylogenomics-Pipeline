@@ -3283,19 +3283,48 @@ See Rmd files in GitHub repository.
 
 ## 8. LITERATURE REFERENCED
 
-Dunn CW, Howison M, Zapata F. 2013. Agalma: an automated phylogenomics workflow. BMC Bioinformatics 14(1): 330. doi:10.1186/1471-2105-14-330
+The following software, analytical frameworks, and primary references were used in the analyses presented in Chapter 2.
 
-Emms, D. M., & Kelly, S. (2015). OrthoFinder: solving fundamental biases in whole genome comparisons dramatically improves orthogroup inference accuracy. Genome Biology, 16(1), 157.
+### Phylogenomic Data Processing
 
-Kocot, K. M., Citarella, M. R., Moroz, L. L., & Halanych, K. M. (2013). PhyloTreePruner: a phylogenetic tree-based approach for selection of orthologous sequences for phylogenomics. Evolutionary Bioinformatics Online, 9, 429.
+- Allen JM, Huang DI, Cronk QCB, Johnson KP. 2015. *aTRAM – automated target restricted assembly method: a fast method for assembling loci across divergent taxa from next-generation sequencing data*. BMC Bioinformatics 16:98.
+- Allen JM, LaFrance R, Folk RA, Johnson KP, Guralnick RP. 2018. *aTRAM 2.0: An Improved, Flexible Locus Assembler for NGS Data*. Evolutionary Bioinformatics 14:1176934318774546.
+- Bolger AM, Lohse M, Usadel B. 2014. *Trimmomatic: A flexible trimmer for Illumina sequence data*. Bioinformatics 30:2114–2120.
+- Emms DM, Kelly S. 2015. *OrthoFinder: solving fundamental biases in whole genome comparisons dramatically improves orthogroup inference accuracy*. Genome Biology 16:157.
+- Faircloth BC. 2016. *PHYLUCE is a software package for the analysis of conserved genomic loci*. Bioinformatics 32:786–788.
+- Gilbert D. 2013. *Gene-omes built from mRNA seq not genome DNA*.
+- Grabherr MG et al. 2011. *Full-length transcriptome assembly from RNA-Seq data without a reference genome*. Nature Biotechnology 29:644–652.
+- Mongiardino Koch N. 2021. *Phylogenomic Subsampling and the Search for Phylogenetically Reliable Loci*. Molecular Biology and Evolution 38:4025–4038.
+- Ryan JF. 2014. *JFR-PerlModules*.
+- Simão FA, Waterhouse RM, Ioannidis P, Kriventseva EV, Zdobnov EM. 2015. *BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs*. Bioinformatics 31:3210–3212.
 
-Nguyen, L. T., Schmidt, H. A., von Haeseler, A., & Minh, B. Q. (2014). IQ-TREE: a fast and effective stochastic algorithm for estimating maximum-likelihood phylogenies. Molecular Biology and Evolution, 32(1), 268-274.
+### Sequence Alignment and Phylogenetic Inference
 
-Suyama, M., Torrents, D., & Bork, P. (2006). PAL2NAL: robust conversion of protein sequence alignments into the corresponding codon alignments. Nucleic Acids Research, 34(suppl_2), W609-W612.
+- Bergsten J. 2005. *A review of long-branch attraction*. Cladistics 21:163–193.
+- Kalyaanamoorthy S, Minh BQ, Wong TKF, von Haeseler A, Jermiin LS. 2017. *ModelFinder: fast model selection for accurate phylogenetic estimates*. Nature Methods 14:587–589.
+- Katoh K, Standley DM. 2013. *MAFFT multiple sequence alignment software version 7: improvements in performance and usability*. Molecular Biology and Evolution 30:772–780.
+- Nguyen LT, Schmidt HA, von Haeseler A, Minh BQ. 2015. *IQ-TREE: A Fast and Effective Stochastic Algorithm for Estimating Maximum-Likelihood Phylogenies*. Molecular Biology and Evolution 32:268–274.
+- Price MN, Dehal PS, Arkin AP. 2009. *FastTree: Computing Large Minimum-Evolution Trees with Profiles instead of a Distance Matrix*. Molecular Biology and Evolution 26:1641–1650.
+- Shimodaira H. 2002. *An approximately unbiased test of phylogenetic tree selection*. Systematic Biology 51:492–508.
+- Suyama M, Torrents D, Bork P. 2006. *PAL2NAL: robust conversion of protein sequence alignments into the corresponding codon alignments*. Nucleic Acids Research 34:W609–W612.
 
-TransDecoder: https://transdecoder.github.io/
+### Ancestral State Reconstruction
 
-Yamada, K. D., Tomii, K., & Katoh, K. (2016). Application of the MAFFT sequence alignment program to large data—reexamination of the usefulness of chained guide trees. Bioinformatics, 32(21), 3246-3251.
+- Akaike H. 1973. *Information theory and an extension of the maximum likelihood principle*.
+- Beaulieu JM, O'Meara BC, Oliver JC, Boyko JD. 2022. *corHMM: Hidden Markov Models of Character Evolution*.
+- Paradis E, Schliep K. 2019. *ape 5.0: an environment for modern phylogenetics and evolutionary analyses in R*. Bioinformatics 35:526–528.
+- Revell LJ. 2024. *phytools 2.0: an updated R ecosystem for phylogenetic comparative methods (and other things)*. PeerJ 12:e16505.
+- Revell LJ, Harmon LJ. 2024. *A discrete character evolution model for phylogenetic comparative biology with Γ-distributed rate heterogeneity among branches of the tree*.
 
-[in progress]
+### Morphological Character Coding and Natural History
+
+- Barta AC et al. In review. *Phylogenomics supports monophyly of marsupial crustaceans: a journey to direct development*.
+- Carter JW. 1982. *Natural history observations on the gastropod shell-using amphipod Photis conchicola*. Journal of Crustacean Biology 2:328–341.
+- Chapman JW. 2007. *Amphipoda: Gammaridea*. In: Carlton JT (ed.), *The Light and Smith Manual*.
+- Dixon IMT, Moore PG. 1997. *A comparative study on the tubes and feeding behaviour of eight species of corophioid Amphipoda*. Philosophical Transactions of the Royal Society B 352:93–112.
+- Horton T et al. 2026. *World Amphipoda Database*.
+- Hughes LE. 2012. *New and little-known Podoceridae (Peracarida: Amphipoda) of southern Australia*. Records of the Australian Museum 64:71–120.
+- LeCroy SE. 2011. *An Illustrated Identification Guide to the Nearshore Marine and Estuarine Gammaridean Amphipoda of Florida*.
+- McKim S, Turner T. 2024. Silk-spinning morphology of corophiidan amphipods.
+- Myers AA, Lowry JK. 2003. *A phylogeny and a classification of the Corophiidea Leach, 1814 (Amphipoda)*. Journal of Crustacean Biology 23:443–485.
 

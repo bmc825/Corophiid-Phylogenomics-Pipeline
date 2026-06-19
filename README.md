@@ -128,11 +128,14 @@ This workflow demonstrates approaches for:
 
 ## Example Outputs
 
+# Species Tree (Transcriptome + Target Capture data)
+
+
 <p align="center">
   <img src="outputs/Tree_Results_Transcriptome-TargetCapture.png" width="75%">
 </p>
 
----
+# Ancestral State Reconstruction (Silk Spinning)
 
 <p align="center">
   <img src="outputs/ASR_Silk.png" width="75%">
